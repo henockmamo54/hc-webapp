@@ -1,3 +1,18 @@
-body{
-    background-color: aliceblue;
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.mycontainer>div>span {
+    width: 50px;
+}
+
+.fname {
+    width: 15%;
+}
+
+.fvalue {
+    width: 10%;
+    text-align: center;
+}
+
+.fvalue>input {
+    text-align: center;
+    border: none !important;
 }
