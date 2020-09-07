@@ -13,24 +13,32 @@ import { Chart } from 'chart.js';
 
 export class PredictionComponent implements OnInit {
 
-  constructor() { }
-
   PieChart: any = [];
+  user: any;
+
+  constructor() {
+    this.user = {
+      FPG: 150,
+      hbalc: 6.8,
+      gammagtp: 78,
+      bmi: 15,
+      triglycerides: 25,
+      age: 28,
+      uricacid: 5.5,
+      sex: 0,
+      physicalactivity: 5,
+      drinking: 2,
+      smoking: 4,
+      familyhistory: 1
+
+    }
+
+  }
 
 
 
-  FPG = 150;
-  hbalc = 6.8;
-  gammagtp = 78;
-  bmi = 15;
-  triglycerides = 25;
-  age = 28;
-  uricacid = 5.5;
-  sex = 0;
-  physicalactivity = 5
-  drinking = 2;
-  smoking = 4;
-  familyhistory = 1;
+
+
 
   public barChartOptions = {
     scaleShowVerticalLines: false,
@@ -48,7 +56,7 @@ export class PredictionComponent implements OnInit {
 
 
     this.PieChart = new Chart('lineChart', {
-      type: 'pie',        
+      type: 'pie',
       data: {
         labels: ["Normal", "Prediabetes", "Diabetes"],
         datasets: [{
@@ -73,9 +81,12 @@ export class PredictionComponent implements OnInit {
           display: true
         },
         legend: {
-          display: true, 
-          position:"bottom"
-      }
+          display: true,
+          position: "bottom"
+        },
+        animation: {
+          easing: "easeInOutExpo"
+        }
         // scales: {
         //   yAxes: [{
         //     ticks: {
@@ -91,9 +102,17 @@ export class PredictionComponent implements OnInit {
 
   onSelectionChange() {
 
-    console.log("on change event")
+    console.log("on change event", Math.random() * 100)
 
-    this.PieChart.data.datasets[0].data = [19, 17, 13, 50, 20, 100, 115, 116, 119, 31, 1, 9];
+    var d = Math.random() * 100
+    var pd = Math.random() * 100
+    var n = Math.random() * 100
+
+    var sum = d + pd + n;
+
+
+
+    this.PieChart.data.datasets[0].data = [d / sum, pd / sum, n / sum];
     this.PieChart.update()
   }
 
