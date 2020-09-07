@@ -44,6 +44,8 @@ export class PredictionComponent implements OnInit {
 
   onSelectionChange(){
 
+    console.log("on change event")
+
   }
 
 }
