@@ -127,7 +127,9 @@
     <div class="col-4">
         <div class="card">
             <div style="display: block">
-                <canvas id=lineChart></canvas>
+                {{piechartdata}}
+                <app-prediction-pie-chart [(data)]="piechartdata" ></app-prediction-pie-chart>
+                
 
                 <!-- <canvas id="barchart" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
                     [legend]="barChartLegend" [chartType]="barChartType">

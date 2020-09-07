@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
 
 
 
@@ -13,10 +12,15 @@ import { Chart } from 'chart.js';
 
 export class PredictionComponent implements OnInit {
 
-  PieChart: any = [];
   user: any;
+  piechartdata: any;
 
   constructor() {
+
+
+  }
+
+  ngOnInit(): void {
     this.user = {
       FPG: 150,
       hbalc: 6.8,
@@ -33,70 +37,7 @@ export class PredictionComponent implements OnInit {
 
     }
 
-  }
-
-
-
-
-
-
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  ];
-
-  ngOnInit(): void {
-
-
-    this.PieChart = new Chart('lineChart', {
-      type: 'pie',
-      data: {
-        labels: ["Normal", "Prediabetes", "Diabetes"],
-        datasets: [{
-          label: '# of Votes',
-          data: [45, 35, 20],
-          backgroundColor: [
-            '#9CCC66',
-            '#27A69A',
-            '#465B65',
-          ],
-          borderColor: [
-            '#9CCC66',
-            '#27A69A',
-            '#465B65',
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        title: {
-          text: "Next year status",
-          display: true
-        },
-        legend: {
-          display: true,
-          position: "bottom"
-        },
-        animation: {
-          easing: "easeInOutExpo"
-        }
-        // scales: {
-        //   yAxes: [{
-        //     ticks: {
-        //       beginAtZero: true
-        //     }
-        //   }]
-        // }
-      }
-    });
-
+    this.piechartdata = [25, 50, 25]
 
   }
 
@@ -109,16 +50,8 @@ export class PredictionComponent implements OnInit {
     var n = Math.random() * 100
 
     var sum = d + pd + n;
+    this.piechartdata = [d / sum, pd / sum, n / sum]
 
-
-
-    this.PieChart.data.datasets[0].data = [d / sum, pd / sum, n / sum];
-    this.PieChart.update()
   }
-
-
-
-
-
 
 }

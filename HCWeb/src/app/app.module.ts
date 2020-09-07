@@ -10,12 +10,14 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';  
 import { MatRadioModule } from '@angular/material/radio';
+import { PredictionPieChartComponent } from './prediction-pie-chart/prediction-pie-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PredictionComponent,
-    CardComponent
+    CardComponent,
+    PredictionPieChartComponent
   ],
   imports: [
     BrowserModule,
