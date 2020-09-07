@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../user.model'
 
 
 
@@ -12,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class PredictionComponent implements OnInit {
 
-  user: any;
+  user: User;
   piechartdata: any;
 
   constructor() {
