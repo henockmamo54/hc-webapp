@@ -86,7 +86,8 @@
                             [(value)]="user.physicalactivity" style="width: 90%;"></mat-slider>
                     </td>
 
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.physicalactivity"> </td>
+                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.physicalactivity">
+                    </td>
                 </tr>
                 <tr>
                     <td class="fname">Drinking: </td>
@@ -127,13 +128,7 @@
     <div class="col-4">
         <div class="card">
             <div style="display: block">
-                {{piechartdata}}
-                <app-prediction-pie-chart [(data)]="piechartdata" ></app-prediction-pie-chart>
-                
-
-                <!-- <canvas id="barchart" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                    [legend]="barChartLegend" [chartType]="barChartType">
-                </canvas> -->
+                <app-prediction-pie-chart [(data)]="piechartdata"></app-prediction-pie-chart>
             </div>
         </div>
     </div>
