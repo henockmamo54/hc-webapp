@@ -7,6 +7,7 @@ import { PredictionComponent } from './prediction/prediction.component';
 import { CardComponent } from './card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';  
 import { MatRadioModule } from '@angular/material/radio';
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule ,
     MatSliderModule  , 
+    MatProgressBarModule,
     ChartsModule,
     FormsModule, 
     MatRadioModule,

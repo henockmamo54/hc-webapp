@@ -16,21 +16,18 @@ export class PredictionPieChartComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.InintPiechart();
-
-    console.log("on it")
   }
 
 
   ngOnChanges(changes: SimpleChanges): void {
 
     if (this.PieChart.length != 0) {
-      console.log("on methods");
       this.PieChart.data.datasets[0].data = this.piechartdata;
       this.PieChart.update()
     }
   }
 
-  
+
   InintPiechart() {
 
     this.PieChart = new Chart('mychart', {

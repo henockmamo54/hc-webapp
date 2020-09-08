@@ -19,7 +19,7 @@ export class PredictionComponent implements OnInit {
   piechartdata: any = [25, 50, 25];
   userFormatedValue: any;
   private ma: any;
-  isloading: boolean;
+  isloading: boolean = false;
 
 
 
@@ -39,15 +39,15 @@ export class PredictionComponent implements OnInit {
       drinking: 2,
       smoking: 4,
       familyhistory: 1
-
     }
 
+
+    this.formatuserData();
+    this.loadData();
 
   }
 
   ngOnInit(): void {
-
-
   }
 
   onSelectionChange() {
@@ -81,8 +81,9 @@ export class PredictionComponent implements OnInit {
   }
 
 
-  loadData() { 
-    
+  loadData() {
+
+    this.isloading = true;
     this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClass", this.userFormatedValue,
       {
         headers: new HttpHeaders({
@@ -90,10 +91,14 @@ export class PredictionComponent implements OnInit {
         })
       }).subscribe(((response) => {
         var response = response;
-        console.log([response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]);
-        this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]] 
+        setTimeout(() => { this.afterDataReceived(response); }, 500);
       }));
 
+  }
+
+  afterDataReceived(response: any) { 
+    this.isloading = false;
+    this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
   }
 
 }
