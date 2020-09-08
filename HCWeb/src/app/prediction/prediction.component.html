@@ -118,16 +118,7 @@
     <div class="col-4">
         <div class="card ">
             <div>
-
-                <!-- <div class="progress-loader" [hidden]="!isloading">
-                    <div class="loading-spinner">
-                        <img src="https://loading.io/mod/spinner/gear-set/index.svg">
-                        <span class="loading-message">Please wait...</span>
-                    </div>
-                </div> -->
-
-                <!-- <img id="loadingbar" class="piechartcontainer" src="../../assets/LoadingBar3.gif"> -->
-                <div style="min-height: 5px;">
+                <div class="progressbarcontainer">
                     <mat-progress-bar *ngIf="isloading" mode="indeterminate"></mat-progress-bar>
                 </div>
                 <app-prediction-pie-chart [(data)]="piechartdata"></app-prediction-pie-chart>

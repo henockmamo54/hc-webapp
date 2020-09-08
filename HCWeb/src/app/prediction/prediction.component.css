@@ -28,3 +28,7 @@ mat-radio-button {
 .piechartcontainer {
     height: 310px;
 }
+
+.progressbarcontainer {
+    min-height: 5px;
+}
