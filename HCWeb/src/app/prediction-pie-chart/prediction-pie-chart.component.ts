@@ -60,7 +60,8 @@ export class PredictionPieChartComponent implements OnInit, OnChanges {
           position: "bottom"
         },
         animation: {
-          easing: "easeInOutExpo"
+          easing: "easeInOutExpo",
+          duration:1000
         }
       }
     });
