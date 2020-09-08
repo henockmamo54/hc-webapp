@@ -13,14 +13,16 @@ import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { PredictionPieChartComponent } from './prediction-pie-chart/prediction-pie-chart.component';
 import {ManageApiCallService} from './manage-api-call.service' 
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { BarchartComponent } from './charts/barchart/barchart.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     PredictionComponent,
     CardComponent,
-    PredictionPieChartComponent 
+    PredictionPieChartComponent,
+    BarchartComponent 
   ],
   imports: [
     BrowserModule,

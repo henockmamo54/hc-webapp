@@ -16,10 +16,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class PredictionComponent implements OnInit {
 
   user: User;
-  piechartdata: any = [25, 50, 25];
   userFormatedValue: any;
   private ma: any;
   isloading: boolean = false;
+
+  // chart data
+  piechartdata: any = [25, 50, 25];
+  age_counts: any;
+  age_bin_edges: any;
+  fpg_counts: any;
+  fpg_bin_edges: any;
+  hbalc_counts: any;
+  hbalc_bin_edges: any;
+  bmi_counts: any;
+  bmi_bin_edges: any;
 
 
 
@@ -44,6 +54,7 @@ export class PredictionComponent implements OnInit {
 
     this.formatuserData();
     this.loadData();
+    this.loadHistogramData();
 
   }
 
@@ -54,6 +65,13 @@ export class PredictionComponent implements OnInit {
 
     this.formatuserData();
     this.loadData();
+
+    this.age_counts = 0;
+    this.fpg_counts = 0;
+    this.hbalc_counts = 0;
+    this.bmi_counts = 0;
+
+    this.loadHistogramData();
 
   }
 
@@ -84,7 +102,7 @@ export class PredictionComponent implements OnInit {
   loadData() {
 
     this.isloading = true;
-    this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClass", this.userFormatedValue,
+    this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClassDirect", this.userFormatedValue,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -96,7 +114,53 @@ export class PredictionComponent implements OnInit {
 
   }
 
-  afterDataReceived(response: any) { 
+
+
+  loadHistogramData() {
+
+    // this.isloading = true;
+    this.httpClient.get("http://127.0.0.1:5000/gethistplotData").subscribe(((response) => {
+      var response = response;
+      console.log("temp data temp data", response);
+      this.age_counts = response["age_counts"];
+      this.fpg_counts = response["fpg_counts"];
+      this.hbalc_counts = response["hbalc_counts"];
+      this.bmi_counts = response["bmi_counts"];
+
+      // this.age_bin_edges = response["age_bin_edges"];
+      // this.fpg_bin_edges = response["fpg_bin_edges"];
+      // this.hbalc_bin_edges = response["hbalc_bin_edges"];
+      // this.bmi_bin_edges = response["bmi_bin_edges"];
+
+      this.formatBarChartLables(response["age_bin_edges"], response["fpg_bin_edges"], response["hbalc_bin_edges"], response["bmi_bin_edges"]);
+
+      // setTimeout(() => { this.afterDataReceived(response); }, 500);
+    }));
+
+  }
+
+  formatBarChartLables(agebin: any, fpgbin: any, hbalcbin: any, bmibin: any) {
+    var tempagelabel = [];
+    var tempfpglabel = [];
+    var temphbalclabel = [];
+    var tempbmilabel = [];
+    for (let i = 0; i < 10; i++) {
+
+      tempagelabel[i] = Math.round(agebin[i]) + " - " + Math.round(agebin[i + 1]);
+      tempfpglabel[i] = (fpgbin[i]) + " - " + (fpgbin[i + 1]);
+      temphbalclabel[i] = (hbalcbin[i]) + " - " + (hbalcbin[i + 1]);
+      tempbmilabel[i] = (bmibin[i]) + " - " + (bmibin[i + 1]);
+    }
+
+    this.age_bin_edges = tempagelabel;
+    this.fpg_bin_edges = tempfpglabel;
+    this.hbalc_bin_edges = temphbalclabel;
+    this.bmi_bin_edges = tempbmilabel;
+
+    // console.log(this.age_bin_edges , "this.age_bin_edges ")
+  }
+
+  afterDataReceived(response: any) {
     this.isloading = false;
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
   }
