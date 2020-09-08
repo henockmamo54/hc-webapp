@@ -12,7 +12,8 @@
                             [(value)]="user.FPG" style="width: 90%;">
                         </mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.FPG"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.FPG"> </td>
                 </tr>
                 <tr>
                     <td class="fname">HbA1c: </td>
@@ -21,7 +22,8 @@
                             [(value)]="user.hbalc" style="width: 90%;">
                         </mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.hbalc"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.hbalc"> </td>
 
                 </tr>
                 <tr>
@@ -30,7 +32,8 @@
                         <mat-slider (change)="onSelectionChange()" min="1" max="100" step="1" thumbLabel={{1}}
                             [(value)]="user.gammagtp" style="width: 90%;"></mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.gammagtp"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.gammagtp"> </td>
                 </tr>
                 <tr>
                     <td class="fname">BMI: </td>
@@ -39,7 +42,8 @@
                             [(value)]="user.bmi" style="width: 90%;">
                         </mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.bmi"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.bmi"> </td>
                 </tr>
                 <tr>
                     <td class="fname">Triglycerides: </td>
@@ -47,7 +51,8 @@
                         <mat-slider (change)="onSelectionChange()" min="1" max="300" step="1" thumbLabel={{1}}
                             [(value)]="user.triglycerides" style="width: 90%;"></mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.triglycerides"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.triglycerides"> </td>
                 </tr>
                 <tr>
                     <td class="fname">Uric acid: </td>
@@ -55,7 +60,8 @@
                         <mat-slider (change)="onSelectionChange()" min="1" max="10" step="0.5" thumbLabel={{1}}
                             [(value)]="user.uricacid" style="width: 90%;"></mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.uricacid"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.uricacid"> </td>
                 </tr>
                 <tr>
                     <td class="fname">Age: </td>
@@ -64,7 +70,8 @@
                             [(value)]="user.age" style="width: 90%;">
                         </mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.age"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.age"> </td>
                 </tr>
                 <tr>
                     <td class="fname">Sex: </td>
@@ -86,7 +93,8 @@
                             [(value)]="user.physicalactivity" style="width: 90%;"></mat-slider>
                     </td>
 
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.physicalactivity">
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.physicalactivity">
                     </td>
                 </tr>
                 <tr>
@@ -96,7 +104,8 @@
                             [(value)]="user.drinking" style="width: 90%;"></mat-slider>
                     </td>
 
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.drinking"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control"
+                            [(ngModel)]="user.drinking"> </td>
                 </tr>
                 <tr>
                     <td class="fname">Smoking: </td>
@@ -105,7 +114,8 @@
                             [(value)]="user.smoking" style="width: 90%;"></mat-slider>
                     </td>
 
-                    <td class="fvalue"><input type="text" class="form-control" [(ngModel)]="user.smoking"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" (change)="onSelectionChange()"
+                            class="form-control" [(ngModel)]="user.smoking"> </td>
                 </tr>
                 <tr>
                     <td class="fname">Family history: </td>
@@ -127,8 +137,17 @@
     </div>
     <div class="col-4">
         <div class="card">
-            <div style="display: block">
+            <div>
+
+                <!-- <div class="progress-loader" [hidden]="!isloading">
+                    <div class="loading-spinner">
+                        <img src="https://loading.io/mod/spinner/gear-set/index.svg">
+                        <span class="loading-message">Please wait...</span>
+                    </div>
+                </div> -->
+
                 <app-prediction-pie-chart [(data)]="piechartdata"></app-prediction-pie-chart>
+
             </div>
         </div>
     </div>

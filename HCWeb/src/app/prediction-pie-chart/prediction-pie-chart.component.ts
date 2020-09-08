@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -6,33 +6,30 @@ import { Chart } from 'chart.js';
   templateUrl: './prediction-pie-chart.component.html',
   styleUrls: ['./prediction-pie-chart.component.css']
 })
-export class PredictionPieChartComponent implements OnInit, OnChanges  {
- 
+export class PredictionPieChartComponent implements OnInit, OnChanges {
+
   @Input("data") piechartdata: any;
   PieChart: any = [];
 
   constructor() {
 
-
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('value changed', this.piechartdata);
-    this.PieChart.data.datasets[0].data = this.piechartdata;
-    this.PieChart.update()
   }
 
   ngOnInit(): void {
 
-     
-    console.log((this.piechartdata))
+    this.InintPiechart();
+
+  }
+
+  InintPiechart() {
 
     this.PieChart = new Chart('mychart', {
       type: 'pie',
       data: {
         labels: ["Normal", "Prediabetes", "Diabetes"],
         datasets: [{
-          label: '# of Votes',
-          data: [45, 35, 20],
+          label: '%',
+          data: this.piechartdata,
           backgroundColor: [
             '#9CCC66',
             '#27A69A',
@@ -60,6 +57,21 @@ export class PredictionPieChartComponent implements OnInit, OnChanges  {
         }
       }
     });
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // console.log("test ", this.piechartdata, this.piechartdata.data)
+    // if (this.piechartdata.data === undefined) {
+    //   this.InintPiechart();
+    // }
+    // else {
+    if (this.piechartdata.data !== undefined) {
+      this.PieChart.data.datasets[0].data = this.piechartdata;
+      this.PieChart.update()
+    }
+    else { this.InintPiechart(); }
+
 
   }
 

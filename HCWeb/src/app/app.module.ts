@@ -11,13 +11,15 @@ import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';  
 import { MatRadioModule } from '@angular/material/radio';
 import { PredictionPieChartComponent } from './prediction-pie-chart/prediction-pie-chart.component';
+import {ManageApiCallService} from './manage-api-call.service' 
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     PredictionComponent,
     CardComponent,
-    PredictionPieChartComponent
+    PredictionPieChartComponent 
   ],
   imports: [
     BrowserModule,
@@ -26,9 +28,10 @@ import { PredictionPieChartComponent } from './prediction-pie-chart/prediction-p
     MatSliderModule  , 
     ChartsModule,
     FormsModule, 
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ManageApiCallService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

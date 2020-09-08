@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../user.model'
+import { User } from '../user.model'
+import { ManageApiCallService } from '../manage-api-call.service'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 
@@ -14,14 +16,16 @@ import {User} from '../user.model'
 export class PredictionComponent implements OnInit {
 
   user: User;
-  piechartdata: any;
+  piechartdata: any = [25, 50, 25];
+  userFormatedValue: any;
+  private ma: any;
+  isloading: boolean;
 
-  constructor() {
 
 
-  }
+  constructor(private manageapi: ManageApiCallService, public httpClient: HttpClient) {
 
-  ngOnInit(): void {
+    this.ma = manageapi;
     this.user = {
       FPG: 150,
       hbalc: 6.8,
@@ -38,20 +42,80 @@ export class PredictionComponent implements OnInit {
 
     }
 
-    this.piechartdata = [25, 50, 25]
+    this.userFormatedValue = {
+      "0": {
+        "L100800": this.user.FPG,
+        "L104600": this.user.hbalc,
+        "L100700": this.user.uricacid,
+        "S000300": this.user.bmi,
+        "L103000": this.user.triglycerides,
+        "AGE": this.user.age,
+        "L101700": this.user.gammagtp,
+        "SEX": this.user.sex,
+        "FIELD_31": this.user.familyhistory,
+        "FIELD_33": this.user.smoking,
+        "FIELD_38": this.user.drinking,
+        "FIELD_40": this.user.physicalactivity
+
+      }
+    }
+
+    // console.log(ma.returntest());
+    console.log(this.ma.sendGetRequest(this.userFormatedValue));
+
+  }
+
+  ngOnInit(): void {
+ 
 
   }
 
   onSelectionChange() {
 
-    console.log("on change event", Math.random() * 100)
+    this.userFormatedValue = {
+      "0": {
+        "L100800": this.user.FPG,
+        "L104600": this.user.hbalc,
+        "L100700": this.user.uricacid,
+        "S000300": this.user.bmi,
+        "L103000": this.user.triglycerides,
+        "AGE": this.user.age,
+        "L101700": this.user.gammagtp,
+        "SEX": this.user.sex,
+        "FIELD_31": this.user.familyhistory,
+        "FIELD_33": this.user.smoking,
+        "FIELD_38": this.user.drinking,
+        "FIELD_40": this.user.physicalactivity
 
-    var d = Math.random() * 100
-    var pd = Math.random() * 100
-    var n = Math.random() * 100
+      }
+    }
 
-    var sum = d + pd + n;
-    this.piechartdata = [d / sum, pd / sum, n / sum]
+
+    console.log("start loading");
+    this.isloading = true;
+    // return this.httpClient.get(this.REST_API_SERVER).pipe(catchError(this.handleError));
+    this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClass", this.userFormatedValue,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }).subscribe(((response) => {
+        var response = response;
+        console.log([response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]);
+        this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]
+        this.isloading = false;
+      }));
+
+    console.log("end loading");
+
+
+
+
+    // var response = this.ma.sendGetRequest(this.userFormatedValue)
+    // console.log([response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]);
+    // this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]
+    // console.log(this.piechartdata)
+
 
   }
 
