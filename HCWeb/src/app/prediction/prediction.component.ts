@@ -42,36 +42,23 @@ export class PredictionComponent implements OnInit {
 
     }
 
-    this.userFormatedValue = {
-      "0": {
-        "L100800": this.user.FPG,
-        "L104600": this.user.hbalc,
-        "L100700": this.user.uricacid,
-        "S000300": this.user.bmi,
-        "L103000": this.user.triglycerides,
-        "AGE": this.user.age,
-        "L101700": this.user.gammagtp,
-        "SEX": this.user.sex,
-        "FIELD_31": this.user.familyhistory,
-        "FIELD_33": this.user.smoking,
-        "FIELD_38": this.user.drinking,
-        "FIELD_40": this.user.physicalactivity
-
-      }
-    }
-
-    // console.log(ma.returntest());
-    console.log(this.ma.sendGetRequest(this.userFormatedValue));
 
   }
 
   ngOnInit(): void {
- 
+
 
   }
 
   onSelectionChange() {
 
+    this.formatuserData();
+    this.loadData();
+
+  }
+
+  formatuserData() {
+
     this.userFormatedValue = {
       "0": {
         "L100800": this.user.FPG,
@@ -88,12 +75,14 @@ export class PredictionComponent implements OnInit {
         "FIELD_40": this.user.physicalactivity
 
       }
-    }
+    };
+
+    return this.userFormatedValue;
+  }
 
 
-    console.log("start loading");
-    this.isloading = true;
-    // return this.httpClient.get(this.REST_API_SERVER).pipe(catchError(this.handleError));
+  loadData() { 
+    
     this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClass", this.userFormatedValue,
       {
         headers: new HttpHeaders({
@@ -102,20 +91,8 @@ export class PredictionComponent implements OnInit {
       }).subscribe(((response) => {
         var response = response;
         console.log([response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]);
-        this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]
-        this.isloading = false;
+        this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]] 
       }));
-
-    console.log("end loading");
-
-
-
-
-    // var response = this.ma.sendGetRequest(this.userFormatedValue)
-    // console.log([response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]);
-    // this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]]
-    // console.log(this.piechartdata)
-
 
   }
 

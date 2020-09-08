@@ -12,15 +12,25 @@ export class PredictionPieChartComponent implements OnInit, OnChanges {
   PieChart: any = [];
 
   constructor() {
-
   }
 
   ngOnInit(): void {
-
     this.InintPiechart();
 
+    console.log("on it")
   }
 
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    if (this.PieChart.length != 0) {
+      console.log("on methods");
+      this.PieChart.data.datasets[0].data = this.piechartdata;
+      this.PieChart.update()
+    }
+  }
+
+  
   InintPiechart() {
 
     this.PieChart = new Chart('mychart', {
@@ -57,21 +67,6 @@ export class PredictionPieChartComponent implements OnInit, OnChanges {
         }
       }
     });
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    // console.log("test ", this.piechartdata, this.piechartdata.data)
-    // if (this.piechartdata.data === undefined) {
-    //   this.InintPiechart();
-    // }
-    // else {
-    if (this.piechartdata.data !== undefined) {
-      this.PieChart.data.datasets[0].data = this.piechartdata;
-      this.PieChart.update()
-    }
-    else { this.InintPiechart(); }
-
 
   }
 
