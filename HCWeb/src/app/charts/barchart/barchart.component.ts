@@ -14,6 +14,7 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked, A
   @Input("chartFeatureName") chartFeatureName: any;
   @Input("currentValue") currentValue: any;
   @Input("id") id: any;
+  @Input("binIndex") binIndex: any;
   @ViewChild('mycanvas') canvas: ElementRef;
   BarChart: any = [];
   chartcolor: any = [];
@@ -82,7 +83,8 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked, A
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    this.prepareChartColors(2);
+    console.log("--------------->",this.binIndex)
+    this.prepareChartColors(this.binIndex);
 
     if (this.BarChart.length != 0) {
       this.BarChart.data.datasets[0].data = this.chartdata;
@@ -99,7 +101,7 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked, A
 
   prepareChartColors(index: any) {
     // 'rgba(75, 192, 192, 0.2)'
-    index = Math.floor(Math.random() * Math.floor(6))
+    // index = Math.floor(Math.random() * Math.floor(6))
 
     var colors = []
     for (let i = 0; i < 10; i++) {

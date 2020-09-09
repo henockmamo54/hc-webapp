@@ -30,6 +30,10 @@ export class PredictionComponent implements OnInit {
   hbalc_bin_edges: any;
   bmi_counts: any;
   bmi_bin_edges: any;
+  agebin_index: any;
+  fpgbin_index: any;
+  hba1cbin_index: any;
+  bmibin_index: any;
 
 
 
@@ -127,6 +131,14 @@ export class PredictionComponent implements OnInit {
       this.hbalc_counts = response["hbalc_counts"];
       this.bmi_counts = response["bmi_counts"];
 
+      this.agebin_index = this.findIndexOfBin(response["age_bin_edges"], this.user.age);
+      this.fpgbin_index = this.findIndexOfBin(response["fpg_bin_edges"], this.user.FPG);
+      this.hba1cbin_index = this.findIndexOfBin(response["hbalc_bin_edges"], this.user.hbalc);
+      this.bmibin_index = this.findIndexOfBin(response["bmi_bin_edges"], this.user.bmi);
+      // var agebin_index = 0;
+      // var agebin_index = 0;
+      // var agebin_index = 0;
+
       // this.age_bin_edges = response["age_bin_edges"];
       // this.fpg_bin_edges = response["fpg_bin_edges"];
       // this.hbalc_bin_edges = response["hbalc_bin_edges"];
@@ -137,6 +149,14 @@ export class PredictionComponent implements OnInit {
       // setTimeout(() => { this.afterDataReceived(response); }, 500);
     }));
 
+  }
+
+  findIndexOfBin(bins: any, value: any) {
+
+    for (let i = 0; i < bins.length; i++) {
+      if (value < bins[i]) { return i - 1; }
+    }
+    return bins.length-1;
   }
 
   formatBarChartLables(agebin: any, fpgbin: any, hbalcbin: any, bmibin: any) {
