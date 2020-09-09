@@ -14,7 +14,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { PredictionPieChartComponent } from './prediction-pie-chart/prediction-pie-chart.component';
 import {ManageApiCallService} from './manage-api-call.service' 
 import { HttpClientModule } from '@angular/common/http';
-import { BarchartComponent } from './charts/barchart/barchart.component'; 
+import { BarchartComponent } from './charts/barchart/barchart.component';
+import { FinalPredictionHeaderValueComponent } from './final-prediction-header-value/final-prediction-header-value.component'; 
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BarchartComponent } from './charts/barchart/barchart.component';
     PredictionComponent,
     CardComponent,
     PredictionPieChartComponent,
-    BarchartComponent 
+    BarchartComponent,
+    FinalPredictionHeaderValueComponent 
   ],
   imports: [
     BrowserModule,
