@@ -179,8 +179,7 @@ export class PredictionComponent implements OnInit {
     this.isloading = false;
     
     var classvalue=response["Class value"][0]["CLASS"];
-    this.statusvalue=this.diabetesClass[classvalue];
-    
+    this.statusvalue=this.diabetesClass[classvalue];    
     this.statuspercetage= response["Class probability"][0]["CLASS "+classvalue];
 
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];

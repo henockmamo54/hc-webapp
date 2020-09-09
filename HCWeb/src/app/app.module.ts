@@ -18,6 +18,7 @@ import { BarchartComponent } from './charts/barchart/barchart.component';
 import { FinalPredictionHeaderValueComponent } from './final-prediction-header-value/final-prediction-header-value.component'; 
 import { GaugeChartModule } from 'angular-gauge-chart'
 
+
 @NgModule({
   declarations: [
     AppComponent,

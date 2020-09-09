@@ -22,8 +22,8 @@ export class FinalPredictionHeaderValueComponent implements OnInit, AfterViewIni
     hasNeedle: false,
     needleColor: 'gray',
     needleUpdateSpeed: 1000,
-    arcColors: ['rgb(44, 151, 222)', 'lightgray'],
-    arcDelimiters: [30],
+    arcColors: ['#4db6ac', 'lightgray'],
+    arcDelimiters: [73,],
     rangeLabel: ['0', '100'],
     needleStartValue: 96,
   }
@@ -35,6 +35,9 @@ export class FinalPredictionHeaderValueComponent implements OnInit, AfterViewIni
     this.status = this.input_status
     this.centralLabel = Math.round((this.input_percentage + Number.EPSILON) * 100) + "%";
     this.needleValue = Math.round((this.input_percentage + Number.EPSILON) * 100);
+    if (Math.round((this.input_percentage + Number.EPSILON) * 100) > 0) {
+      this.options.arcDelimiters = [Math.round((this.input_percentage + Number.EPSILON) * 100),]
+    }
   }
 
   ngOnInit(): void {
