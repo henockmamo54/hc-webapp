@@ -83,10 +83,9 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked, A
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    console.log("--------------->",this.binIndex)
-    this.prepareChartColors(this.binIndex);
 
     if (this.BarChart.length != 0) {
+      this.prepareChartColors(this.binIndex);
       this.BarChart.data.datasets[0].data = this.chartdata;
       this.BarChart.data.labels = this.chartlabel;
       this.BarChart.data.datasets[0].backgroundColor = this.chartcolor;
@@ -99,9 +98,7 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked, A
 
   }
 
-  prepareChartColors(index: any) {
-    // 'rgba(75, 192, 192, 0.2)'
-    // index = Math.floor(Math.random() * Math.floor(6))
+  prepareChartColors(index: any) { 
 
     var colors = []
     for (let i = 0; i < 10; i++) {

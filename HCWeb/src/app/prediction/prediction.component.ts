@@ -135,18 +135,8 @@ export class PredictionComponent implements OnInit {
       this.fpgbin_index = this.findIndexOfBin(response["fpg_bin_edges"], this.user.FPG);
       this.hba1cbin_index = this.findIndexOfBin(response["hbalc_bin_edges"], this.user.hbalc);
       this.bmibin_index = this.findIndexOfBin(response["bmi_bin_edges"], this.user.bmi);
-      // var agebin_index = 0;
-      // var agebin_index = 0;
-      // var agebin_index = 0;
-
-      // this.age_bin_edges = response["age_bin_edges"];
-      // this.fpg_bin_edges = response["fpg_bin_edges"];
-      // this.hbalc_bin_edges = response["hbalc_bin_edges"];
-      // this.bmi_bin_edges = response["bmi_bin_edges"];
 
       this.formatBarChartLables(response["age_bin_edges"], response["fpg_bin_edges"], response["hbalc_bin_edges"], response["bmi_bin_edges"]);
-
-      // setTimeout(() => { this.afterDataReceived(response); }, 500);
     }));
 
   }
@@ -156,7 +146,7 @@ export class PredictionComponent implements OnInit {
     for (let i = 0; i < bins.length; i++) {
       if (value < bins[i]) { return i - 1; }
     }
-    return bins.length-1;
+    return bins.length - 1;
   }
 
   formatBarChartLables(agebin: any, fpgbin: any, hbalcbin: any, bmibin: any) {
