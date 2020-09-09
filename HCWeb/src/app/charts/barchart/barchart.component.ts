@@ -19,9 +19,7 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked {
 
 
 
-  constructor() {
-    console.log("bar chart")
-
+  constructor() {  
 
   }
 
@@ -30,7 +28,6 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.BarChart.length, 'this.chartlabel', this.chartlabel, this.chartdata)
 
     this.prepareChartColors(2);
 
@@ -41,7 +38,7 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked {
       this.BarChart.data.datasets[0].borderColor = this.chartcolor;
       this.BarChart.update()
     }
-    else{
+    else {
 
     }
 
@@ -64,11 +61,11 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked {
 
   ngOnInit(): void {
     // Bar chart:
-    console.log("inintttttttttttttttt", this.id, document.getElementById("agedistribution"));
+
     this.BarChart = new Chart("bar", {
       type: 'bar',
       data: {
-        labels: this.chartlabel, //["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Yellow", "Green", "Purple", "Orange"],//this.chartlabel,
+        labels: this.chartlabel,
         datasets: [{
           label: "",//'# of Votes',
           data: this.chartdata,//[9, 7, 3, 5, 2, 10],
