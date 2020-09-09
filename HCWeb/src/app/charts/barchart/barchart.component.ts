@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewChecked, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import * as Chart from 'chart.js';
 import { NONE_TYPE } from '@angular/compiler';
 
@@ -7,19 +7,20 @@ import { NONE_TYPE } from '@angular/compiler';
   templateUrl: './barchart.component.html',
   styleUrls: ['./barchart.component.css']
 })
-export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked {
+export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked, AfterViewInit {
 
   @Input("data") chartdata: any;
   @Input("data_label") chartlabel: any;
   @Input("chartFeatureName") chartFeatureName: any;
   @Input("currentValue") currentValue: any;
   @Input("id") id: any;
+  @ViewChild('mycanvas') canvas: ElementRef;
   BarChart: any = [];
   chartcolor: any = [];
 
 
 
-  constructor() {  
+  constructor() {
 
   }
 
@@ -27,42 +28,10 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked {
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngAfterViewInit() {
 
-    this.prepareChartColors(2);
-
-    if (this.BarChart.length != 0) {
-      this.BarChart.data.datasets[0].data = this.chartdata;
-      this.BarChart.data.labels = this.chartlabel;
-      this.BarChart.data.datasets[0].backgroundColor = this.chartcolor;
-      this.BarChart.data.datasets[0].borderColor = this.chartcolor;
-      this.BarChart.update()
-    }
-    else {
-
-    }
-
-  }
-
-  prepareChartColors(index: any) {
-    // 'rgba(75, 192, 192, 0.2)'
-    index = Math.floor(Math.random() * Math.floor(6))
-
-    var colors = []
-    for (let i = 0; i < 10; i++) {
-      if (i == index) colors[i] = 'rgb(39,166,154)'
-      else
-        colors[i] = 'rgba(75, 192, 192, 0.3)'
-    }
-
-    this.chartcolor = colors;
-
-  }
-
-  ngOnInit(): void {
-    // Bar chart:
-
-    this.BarChart = new Chart("bar", {
+    // Bar chart: 
+    this.BarChart = new Chart(this.canvas.nativeElement.getContext('2d'), {
       type: 'bar',
       data: {
         labels: this.chartlabel,
@@ -108,6 +77,43 @@ export class BarchartComponent implements OnInit, OnChanges, AfterViewChecked {
         }
       }
     });
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    this.prepareChartColors(2);
+
+    if (this.BarChart.length != 0) {
+      this.BarChart.data.datasets[0].data = this.chartdata;
+      this.BarChart.data.labels = this.chartlabel;
+      this.BarChart.data.datasets[0].backgroundColor = this.chartcolor;
+      this.BarChart.data.datasets[0].borderColor = this.chartcolor;
+      this.BarChart.update()
+    }
+    else {
+
+    }
+
+  }
+
+  prepareChartColors(index: any) {
+    // 'rgba(75, 192, 192, 0.2)'
+    index = Math.floor(Math.random() * Math.floor(6))
+
+    var colors = []
+    for (let i = 0; i < 10; i++) {
+      if (i == index) colors[i] = 'rgb(39,166,154)'
+      else
+        colors[i] = 'rgba(75, 192, 192, 0.3)'
+    }
+
+    this.chartcolor = colors;
+
+  }
+
+  ngOnInit(): void {
+
 
   }
 
