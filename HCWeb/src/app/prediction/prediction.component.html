@@ -130,13 +130,18 @@
 
             </div>
         </div>
+
+        <br>
+
+        <div class="card ">
+            <app-barchart id="hbalcdistribution" [(data)]="age_counts" [(data_label)]="hbalc_bin_edges" chartFeatureName="HbA1c" [(currentValue)]="user.hbalc" [(binIndex)]="hba1cbin_index"></app-barchart>
+
+        </div>
     </div>
     <div class="col-4">
         <app-barchart id="agedistribution" [(data)]="age_counts" [(data_label)]="age_bin_edges" chartFeatureName="Age" [(currentValue)]="user.age" [(binIndex)]="agebin_index"></app-barchart>
         <br>
         <app-barchart id="fpgdistribution" [(data)]="fpg_counts" [(data_label)]="fpg_bin_edges" chartFeatureName="FPG" [(currentValue)]="user.FPG" [(binIndex)]="fpgbin_index"></app-barchart>
-        <br>
-        <app-barchart id="hbalcdistribution" [(data)]="age_counts" [(data_label)]="hbalc_bin_edges" chartFeatureName="Age" [(currentValue)]="user.hbalc" [(binIndex)]="hba1cbin_index"></app-barchart>
         <br>
         <app-barchart id="bmidistribution" [(data)]="age_counts" [(data_label)]="bmi_bin_edges" chartFeatureName="BMI" [(currentValue)]="user.bmi" [(binIndex)]="bmibin_index"></app-barchart>
     </div>
