@@ -16,6 +16,7 @@ import {ManageApiCallService} from './manage-api-call.service'
 import { HttpClientModule } from '@angular/common/http';
 import { BarchartComponent } from './charts/barchart/barchart.component';
 import { FinalPredictionHeaderValueComponent } from './final-prediction-header-value/final-prediction-header-value.component'; 
+import { GaugeChartModule } from 'angular-gauge-chart'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FinalPredictionHeaderValueComponent } from './final-prediction-header-v
     ChartsModule,
     FormsModule, 
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    GaugeChartModule
   ],
   providers: [ManageApiCallService, HttpClientModule],
   bootstrap: [AppComponent]

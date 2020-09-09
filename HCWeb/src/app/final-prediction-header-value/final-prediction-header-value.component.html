@@ -1,2 +1,17 @@
-<p>final-prediction-header-value works!</p>
-<canvas #canvas23 id="dchart"></canvas>
+<div class="row">
+
+    <div class="col-6">
+
+        <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options" [name]="name" [bottomLabel]="bottomLabel"></rg-gauge-chart>
+
+    </div>
+
+    <div class="col-4" style="margin: auto;
+    width: 50%; 
+    padding: 10px; font-size: 25px;
+    font-weight: 600;">
+        Status
+        <hr> {{status}}
+    </div>
+
+</div>

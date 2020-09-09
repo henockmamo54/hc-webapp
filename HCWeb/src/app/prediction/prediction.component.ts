@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user.model'
 import { ManageApiCallService } from '../manage-api-call.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { max } from 'rxjs/operators';
 
 
 
@@ -19,9 +20,11 @@ export class PredictionComponent implements OnInit {
   userFormatedValue: any;
   private ma: any;
   isloading: boolean = false;
+  statusvalue: any;
+  statuspercetage: number;
 
   // chart data
-  piechartdata: any = [25, 50, 25];
+  piechartdata: Array<number> = [25, 50, 25];
   age_counts: any;
   age_bin_edges: any;
   fpg_counts: any;
@@ -113,6 +116,7 @@ export class PredictionComponent implements OnInit {
         })
       }).subscribe(((response) => {
         var response = response;
+        console.log("response", response)
         setTimeout(() => { this.afterDataReceived(response); }, 500);
       }));
 
@@ -170,9 +174,19 @@ export class PredictionComponent implements OnInit {
     // console.log(this.age_bin_edges , "this.age_bin_edges ")
   }
 
+  diabetesClass = ["Normal", "Prediabetes", "Diabetes"];
   afterDataReceived(response: any) {
     this.isloading = false;
+    
+    var classvalue=response["Class value"][0]["CLASS"];
+    this.statusvalue=this.diabetesClass[classvalue];
+    
+    this.statuspercetage= response["Class probability"][0]["CLASS "+classvalue];
+
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
+
+
+    console.log("response test",(this.piechartdata),this.statusvalue,this.statuspercetage)
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as Chart from 'chart.js';
 
 @Component({
@@ -6,62 +6,42 @@ import * as Chart from 'chart.js';
   templateUrl: './final-prediction-header-value.component.html',
   styleUrls: ['./final-prediction-header-value.component.css']
 })
-export class FinalPredictionHeaderValueComponent implements OnInit, AfterViewInit {
+export class FinalPredictionHeaderValueComponent implements OnInit, AfterViewInit, OnChanges {
   PieChart: Chart;
   @ViewChild('canvas23') canvas23: ElementRef;
+  @Input("input_percentage") input_percentage: any;
+  @Input("input_status") input_status: any;
+
+  status = "Diabetes"
+  public canvasWidth = 300
+  public needleValue = 45
+  public centralLabel = '65% '
+  public name = ''
+  public bottomLabel = ''
+  public options = {
+    hasNeedle: false,
+    needleColor: 'gray',
+    needleUpdateSpeed: 1000,
+    arcColors: ['rgb(44, 151, 222)', 'lightgray'],
+    arcDelimiters: [30],
+    rangeLabel: ['0', '100'],
+    needleStartValue: 96,
+  }
 
   constructor() {
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("*********************on change method", 100 * Math.round((this.input_percentage + Number.EPSILON) * 100) / 100, this.input_status);
+    this.status = this.input_status
+    this.centralLabel = Math.round((this.input_percentage + Number.EPSILON) * 100) + "%";
+    this.needleValue = Math.round((this.input_percentage + Number.EPSILON) * 100);
   }
 
   ngOnInit(): void {
 
-    // pie chart:
-    this.PieChart = new Chart('dchart', {
-      type: 'doughnut',
-      data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-          label: '# of Votes',
-          data: [9, 7, 3, 5, 2, 10],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        title: {
-          text: "Bar Chart",
-          display: true
-        },
-        // scales: {
-        //   yAxes: [{
-        //     ticks: {
-        //       beginAtZero: true
-        //     }
-        //   }]
-        // }
-      }
-    });
-
   }
 
   ngAfterViewInit(): void {
-    var ctx = this.canvas23.nativeElement.getContext('2d');
-    console.log("henock ", this.canvas23, ctx)
 
   }
 
