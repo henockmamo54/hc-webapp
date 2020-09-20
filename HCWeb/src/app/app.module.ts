@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BarchartComponent } from './charts/barchart/barchart.component';
 import { FinalPredictionHeaderValueComponent } from './final-prediction-header-value/final-prediction-header-value.component'; 
 import { GaugeChartModule } from 'angular-gauge-chart'
+import {MatTabsModule} from '@angular/material/tabs';
+import { DiabetespredictionStyle1Component } from './diabetes/diabetesprediction-style1/diabetesprediction-style1.component'
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { GaugeChartModule } from 'angular-gauge-chart'
     CardComponent,
     PredictionPieChartComponent,
     BarchartComponent,
-    FinalPredictionHeaderValueComponent 
+    FinalPredictionHeaderValueComponent,
+    DiabetespredictionStyle1Component 
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { GaugeChartModule } from 'angular-gauge-chart'
     FormsModule, 
     MatRadioModule,
     HttpClientModule,
-    GaugeChartModule
+    GaugeChartModule,
+    MatTabsModule
   ],
   providers: [ManageApiCallService, HttpClientModule],
   bootstrap: [AppComponent]

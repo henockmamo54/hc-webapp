@@ -1,152 +1,163 @@
 <div class="row">
+    <mat-tab-group animationDuration="1000ms" style="width: 100%;">
+        <mat-tab label="Diabetes 1">
+            <app-diabetesprediction-style1></app-diabetesprediction-style1>
+        </mat-tab>
+        <mat-tab label="Second"> Content 2 </mat-tab>
+        <mat-tab label="Third"> Content 3 </mat-tab>
+    </mat-tab-group>
 
-    <div class="col-lg-4 col-sm-12">
-        <div class="card">
+    <div class="row tabContentContainer">
 
-            <div class="card-body mycontainer">
+        <div class="col-lg-4 col-sm-12">
+            <div class="card">
 
-                <tr>
-                    <td class="fname">FBG: </td>
-                    <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.FPG" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.FPG"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">HbA1c: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="20" step="0.5" thumbLabel={{1}} [(value)]="user.hbalc" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.hbalc"> </td>
+                <div class="card-body mycontainer">
 
-                </tr>
-                <tr>
-                    <td class="fname">gamma GTP: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="user.gammagtp" style="width: 90%;"></mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">BMI: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="50" step="1" thumbLabel={{1}} [(value)]="user.bmi" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.bmi"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">Triglycerides: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="1" thumbLabel={{1}} [(value)]="user.triglycerides" style="width: 90%;"></mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.triglycerides"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">Uric acid: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="user.uricacid" style="width: 90%;"></mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.uricacid"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">Age: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="user.age" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.age"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">Sex: </td>
-                    <td>
-                        <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.sex">
-                            <mat-radio-button class="radio" [value]="0">Male</mat-radio-button>
-                            <mat-radio-button class="radio" [value]="1">Female</mat-radio-button>
-                        </mat-radio-group>
+                    <tr>
+                        <td class="fname">FBG: </td>
+                        <td class="fslider">
+                            <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.FPG" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.FPG"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">HbA1c: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="1" max="20" step="0.5" thumbLabel={{1}} [(value)]="user.hbalc" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.hbalc"> </td>
 
-                    </td>
-                    <td class="fvalue">
-                        <!-- <input type="text" class="form-control" [(ngModel)]="sex">  -->
-                    </td>
-                </tr>
-                <tr>
-                    <td class="fname">Physical activity: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="0" max="7" step="1" thumbLabel={{1}} [(value)]="user.physicalactivity" style="width: 90%;"></mat-slider>
-                    </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">gamma GTP: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="user.gammagtp" style="width: 90%;"></mat-slider>
+                        </td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">BMI: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="1" max="50" step="1" thumbLabel={{1}} [(value)]="user.bmi" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.bmi"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Triglycerides: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="1" max="300" step="1" thumbLabel={{1}} [(value)]="user.triglycerides" style="width: 90%;"></mat-slider>
+                        </td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.triglycerides"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Uric acid: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="user.uricacid" style="width: 90%;"></mat-slider>
+                        </td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.uricacid"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Age: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="user.age" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.age"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Sex: </td>
+                        <td>
+                            <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.sex">
+                                <mat-radio-button class="radio" [value]="0">Male</mat-radio-button>
+                                <mat-radio-button class="radio" [value]="1">Female</mat-radio-button>
+                            </mat-radio-group>
 
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.physicalactivity">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="fname">Drinking: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="0" max="8" step="1" thumbLabel={{1}} [(value)]="user.drinking" style="width: 90%;"></mat-slider>
-                    </td>
+                        </td>
+                        <td class="fvalue">
+                            <!-- <input type="text" class="form-control" [(ngModel)]="sex">  -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Physical activity: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="0" max="7" step="1" thumbLabel={{1}} [(value)]="user.physicalactivity" style="width: 90%;"></mat-slider>
+                        </td>
 
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.drinking"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">Smoking: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="0" max="6" step="1" thumbLabel={{1}} [(value)]="user.smoking" style="width: 90%;"></mat-slider>
-                    </td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.physicalactivity">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Drinking: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="0" max="8" step="1" thumbLabel={{1}} [(value)]="user.drinking" style="width: 90%;"></mat-slider>
+                        </td>
 
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.smoking"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">Family history: </td>
-                    <td>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.drinking"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Smoking: </td>
+                        <td>
+                            <mat-slider (change)="onSelectionChange()" min="0" max="6" step="1" thumbLabel={{1}} [(value)]="user.smoking" style="width: 90%;"></mat-slider>
+                        </td>
 
-                        <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.familyhistory">
-                            <mat-radio-button class="radio" [value]="0">No</mat-radio-button>
-                            <mat-radio-button class="radio" [value]="1">Yes</mat-radio-button>
-                        </mat-radio-group>
+                        <td class="fvalue"><input type="text" (change)="onSelectionChange()" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.smoking"> </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Family history: </td>
+                        <td>
 
-                    </td>
+                            <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.familyhistory">
+                                <mat-radio-button class="radio" [value]="0">No</mat-radio-button>
+                                <mat-radio-button class="radio" [value]="1">Yes</mat-radio-button>
+                            </mat-radio-group>
 
-                    <td class="fvalue">
-                        <!-- <input type="text" class="form-control" [(ngModel)]="familyhistory"> -->
-                    </td>
-                </tr>
-            </div>
-        </div>
-        <br>
-    </div>
-    <div class="col-lg-4 col-sm-12">
-        <div class="card ">
-            <app-final-prediction-header-value [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value>
-        </div>
-        <br>
-        <div class="card ">
-            <div>
-                <div class="progressbarcontainer">
-                    <mat-progress-bar *ngIf="isloading" mode="indeterminate"></mat-progress-bar>
+                        </td>
+
+                        <td class="fvalue">
+                            <!-- <input type="text" class="form-control" [(ngModel)]="familyhistory"> -->
+                        </td>
+                    </tr>
                 </div>
-                <app-prediction-pie-chart [(data)]="piechartdata"></app-prediction-pie-chart>
+            </div>
+            <br>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <div class="card ">
+                <app-final-prediction-header-value [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value>
+            </div>
+            <br>
+            <div class="card ">
+                <div>
+                    <div class="progressbarcontainer">
+                        <mat-progress-bar *ngIf="isloading" mode="indeterminate"></mat-progress-bar>
+                    </div>
+                    <app-prediction-pie-chart [(data)]="piechartdata"></app-prediction-pie-chart>
 
+
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card ">
+                <app-barchart id="hbalcdistribution" [(data)]="age_counts" [(data_label)]="hbalc_bin_edges" chartFeatureName="HbA1c" [(currentValue)]="user.hbalc" [(binIndex)]="hba1cbin_index"></app-barchart>
 
             </div>
+            <br>
         </div>
+        <div class="col-lg-4 col-sm-12">
+            <app-barchart id="agedistribution" [(data)]="age_counts" [(data_label)]="age_bin_edges" chartFeatureName="Age" [(currentValue)]="user.age" [(binIndex)]="agebin_index"></app-barchart>
+            <br>
+            <app-barchart id="fpgdistribution" [(data)]="fpg_counts" [(data_label)]="fpg_bin_edges" chartFeatureName="FPG" [(currentValue)]="user.FPG" [(binIndex)]="fpgbin_index"></app-barchart>
+            <br>
+            <app-barchart id="bmidistribution" [(data)]="age_counts" [(data_label)]="bmi_bin_edges" chartFeatureName="BMI" [(currentValue)]="user.bmi" [(binIndex)]="bmibin_index"></app-barchart>
 
-        <br>
-
-        <div class="card ">
-            <app-barchart id="hbalcdistribution" [(data)]="age_counts" [(data_label)]="hbalc_bin_edges" chartFeatureName="HbA1c" [(currentValue)]="user.hbalc" [(binIndex)]="hba1cbin_index"></app-barchart>
-
+            <br>
         </div>
-        <br>
     </div>
-    <div class="col-lg-4 col-sm-12">
-        <app-barchart id="agedistribution" [(data)]="age_counts" [(data_label)]="age_bin_edges" chartFeatureName="Age" [(currentValue)]="user.age" [(binIndex)]="agebin_index"></app-barchart>
-        <br>
-        <app-barchart id="fpgdistribution" [(data)]="fpg_counts" [(data_label)]="fpg_bin_edges" chartFeatureName="FPG" [(currentValue)]="user.FPG" [(binIndex)]="fpgbin_index"></app-barchart>
-        <br>
-        <app-barchart id="bmidistribution" [(data)]="age_counts" [(data_label)]="bmi_bin_edges" chartFeatureName="BMI" [(currentValue)]="user.bmi" [(binIndex)]="bmibin_index"></app-barchart>
 
-        <br>
-    </div>
 </div>

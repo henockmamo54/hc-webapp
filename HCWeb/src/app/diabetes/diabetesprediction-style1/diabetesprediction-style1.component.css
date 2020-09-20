@@ -40,8 +40,3 @@ mat-radio-button {
 .tabContentContainer {
     margin: 10px;
 }
-
-
-/* ::ng-deep .mat-progress-bar-buffer {
-    background: #E4E8EB;
-} */
