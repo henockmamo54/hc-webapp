@@ -5,35 +5,33 @@
         <div class="card">
 
 
-
-
             <div class="card-body mycontainer">
 
-                <table>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td style="text-align: center;">
-                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue" thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
-                            <br> Normal
-                        </td>
+                <table class="table table-sm">
 
-                        <td style="text-align: center;">
-                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue" thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
-                            <br> Normal
-                        </td>
-                    </tr>
 
-                    <tr style="    border-style: ridge;
-                    border-color: #b1b1b1b8;
-                    border-width: 1px;
-                    border-left: none;
-                    border-right: none; ">
-                        <td>Feature</td>
-                        <td>This Year</td>
-                        <td>Next year predicted</td>
-                        <td>Adjustable Next year value</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th style="text-align: center;">
+                                <ngx-gauge [type]="gaugeType" [value]="gaugeValue" thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
+                                <br> Normal
+                            </th>
+
+                            <th style="text-align: center;">
+                                <ngx-gauge [type]="gaugeType" [value]="gaugeValue" thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
+                                <br> Normal
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: left !important;">Feature</th>
+                            <th>This Year Value</th>
+                            <th>Next Year Predicted Value</th>
+                            <th>Adjustable Next Year Value</th>
+                        </tr>
+                    </thead>
 
                     <tr>
                         <td class="fname">FBG: </td>
@@ -127,34 +125,36 @@
 
                     </tr>
                 </table>
-                <tr>
-                    <td class="fname">Sex: </td>
-                    <td>
-                        <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.sex">
-                            <mat-radio-button class="radio" [value]="0">Male</mat-radio-button>
-                            <mat-radio-button class="radio" [value]="1">Female</mat-radio-button>
-                        </mat-radio-group>
+                <table>
+                    <tr>
+                        <td class="fname">Sex: </td>
+                        <td>
+                            <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.sex">
+                                <mat-radio-button class="radio" [value]="0">Male</mat-radio-button>
+                                <mat-radio-button class="radio" [value]="1">Female</mat-radio-button>
+                            </mat-radio-group>
 
-                    </td>
-                    <td class="fvalue">
+                        </td>
+                        <td class="fvalue">
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="fname">Family history: </td>
-                    <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Family history: </td>
+                        <td>
 
-                        <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.familyhistory">
-                            <mat-radio-button class="radio" [value]="0">No</mat-radio-button>
-                            <mat-radio-button class="radio" [value]="1">Yes</mat-radio-button>
-                        </mat-radio-group>
+                            <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.familyhistory">
+                                <mat-radio-button class="radio" [value]="0">No</mat-radio-button>
+                                <mat-radio-button class="radio" [value]="1">Yes</mat-radio-button>
+                            </mat-radio-group>
 
-                    </td>
+                        </td>
 
-                    <td class="fvalue">
+                        <td class="fvalue">
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <br>
@@ -164,13 +164,11 @@
     <div class="col-lg-6 col-sm-12">
         <div class="row">
             <div class=" col-lg-6 col-sm-12 ">
-                <app-final-prediction-header-value class="card" [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value>
-
-                <br>
-                <br> </div>
+                <app-final-prediction-header-value class="card" style="height: 231px;" [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value>
+            </div>
             <br>
             <div class=" col-lg-6 col-sm-12 ">
-                <div class="card">
+                <div class="card" style="height: 231px;">
                     <div class="progressbarcontainer">
                         <mat-progress-bar *ngIf="isloading" mode="indeterminate"></mat-progress-bar>
                     </div>

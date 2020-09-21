@@ -4,6 +4,7 @@
 
 .fname {
     width: 15%;
+    vertical-align: inherit;
 }
 
 .fvalue {
@@ -39,4 +40,8 @@ mat-radio-button {
 
 .tabContentContainer {
     margin: 10px;
+}
+
+tr>th {
+    text-align: center;
 }
