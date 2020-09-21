@@ -26,6 +26,7 @@
     "bootstrap": "^4.5.2",
     "chart.js": "^2.9.3",
     "cors": "^2.8.5",
+    "lodash": "^4.17.20",
     "ng2-charts": "^2.4.0",
     "ngx-gauge": "^1.1.0",
     "rxjs": "~6.6.0",

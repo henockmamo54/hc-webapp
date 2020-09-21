@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ManageApiCallService } from 'src/app/manage-api-call.service';
 import { User } from '../../user.model'
+import { cloneDeep } from "lodash";
 
 @Component({
   selector: 'app-diabetesprediction-style2',
@@ -10,6 +11,11 @@ import { User } from '../../user.model'
 })
 export class DiabetespredictionStyle2Component implements OnInit {
   user: User;
+  thisyearuservalue: User;  
+  nextyearuservalue: User;
+  diabetesClass = ["Normal", "Prediabetes", "Diabetes"];
+
+
   userFormatedValue: any;
   private ma: any;
   isloading: boolean = false;
@@ -17,7 +23,7 @@ export class DiabetespredictionStyle2Component implements OnInit {
   statuspercetage: number;
 
   gaugeType = "full";
-  gaugeValue = 28.3; 
+  gaugeValue = 28.3;
   gaugeAppendText = "%";
 
   // chart data
@@ -34,6 +40,7 @@ export class DiabetespredictionStyle2Component implements OnInit {
   fpgbin_index: any;
   hba1cbin_index: any;
   bmibin_index: any;
+  isNextYearPredictedValueloading: boolean;
 
 
 
@@ -41,37 +48,29 @@ export class DiabetespredictionStyle2Component implements OnInit {
 
     this.ma = manageapi;
     this.user = new User();
-    this.user.FPG= 150;
-    this.user.hbalc= 6.8;
-    this.user.gammagtp= 78;
-    this.user.bmi= 15;
-    this.user.triglycerides= 25;
-    this.user.age= 28;
-    this.user.uricacid= 5.5;
-    this.user.sex= 0;
-    this.user.physicalactivity= 5;
-    this.user.drinking= 2;
-    this.user.smoking= 4;
-    this.user.familyhistory= 1;
-    // this.user = {
-    //   FPG: 150,
-    //   hbalc: 6.8,
-    //   gammagtp: 78,
-    //   bmi: 15,
-    //   triglycerides: 25,
-    //   age: 28,
-    //   uricacid: 5.5,
-    //   sex: 0,
-    //   physicalactivity: 5,
-    //   drinking: 2,
-    //   smoking: 4,
-    //   familyhistory: 1
-    // }
+    this.user.FPG = 150;
+    this.user.hbalc = 6.8;
+    this.user.gammagtp = 78;
+    this.user.bmi = 15;
+    this.user.triglycerides = 25;
+    this.user.age = 28;
+    this.user.uricacid = 5.5;
+    this.user.sex = 0;
+    this.user.physicalactivity = 5;
+    this.user.drinking = 2;
+    this.user.smoking = 4;
+    this.user.familyhistory = 1;
+
+    this.thisyearuservalue = cloneDeep(this.user);
+    this.nextyearuservalue=cloneDeep(this.user);
+
 
 
     this.formatuserData();
     this.loadData();
     this.loadHistogramData();
+
+    this.loadNextYearPredictedFeatureValues();
 
   }
 
@@ -107,12 +106,63 @@ export class DiabetespredictionStyle2Component implements OnInit {
         "FIELD_31": this.user.familyhistory,
         "FIELD_33": this.user.smoking,
         "FIELD_38": this.user.drinking,
-        "FIELD_40": this.user.physicalactivity
+        "FIELD_40": this.user.physicalactivity,
+        "L100500": this.user.creatinine,
+        "L101200": this.user.serumGOT,
+        "L101300": this.user.serumGPT,
+        "L101600": this.user.alkphosphatse,
+        "L103100": this.user.HDLcholesterol,
+        "L103300": this.user.cardiacriskfactor,
+        "L107400": this.user.BUNCREAratio,
+        "L190000": this.user.WBC,
+        "L190300": this.user.RBC,
+        "L190400": this.user.hemoglobin,
+        "S000100": this.user.height,
+        "S000501": this.user.SBP,
+        "S000502": this.user.DBP
 
       }
     };
 
     return this.userFormatedValue;
+  }
+
+
+  loadNextYearPredictedFeatureValues(){
+
+    this.isNextYearPredictedValueloading = true;
+    this.httpClient.post("http://127.0.0.1:5000/predictDiabeticNextYearValue", this.userFormatedValue,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }).subscribe(((response) => {
+        var response = response;
+        console.log("NEW ===== >>>> response", response)
+        setTimeout(() => { this.afterNextYearValuePredictionDataReceived(response); }, 500);
+      })); 
+  } 
+  
+  afterNextYearValuePredictionDataReceived(response: any) {
+    
+    this.isNextYearPredictedValueloading = false;
+
+    this.nextyearuservalue.hbalc=response["Next Year Value"][0]["L104600"].toFixed(2);
+    this.nextyearuservalue.gammagtp=response["Next Year Value"][0]["L101700"].toFixed(2);
+    this.nextyearuservalue.bmi=response["Next Year Value"][0]["S000300"].toFixed(2);
+    this.nextyearuservalue.triglycerides=response["Next Year Value"][0]["L103000"].toFixed(2);
+    this.nextyearuservalue.uricacid=response["Next Year Value"][0]["L100700"].toFixed(2);
+    this.nextyearuservalue.age=response["Next Year Value"][0]["AGE"];
+
+    var classvalue = response["Class value"][0]["CLASS"];
+    this.statusvalue = this.diabetesClass[classvalue];
+    this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
+
+    this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
+
+
+    console.log("response test", (this.piechartdata), this.statusvalue, this.statuspercetage);
+    this.gaugeValue=100*response["Class probability"][0]["CLASS " + classvalue];
   }
 
 
@@ -184,18 +234,19 @@ export class DiabetespredictionStyle2Component implements OnInit {
     // console.log(this.age_bin_edges , "this.age_bin_edges ")
   }
 
-  diabetesClass = ["Normal", "Prediabetes", "Diabetes"];
   afterDataReceived(response: any) {
     this.isloading = false;
-    
-    var classvalue=response["Class value"][0]["CLASS"];
-    this.statusvalue=this.diabetesClass[classvalue];    
-    this.statuspercetage= response["Class probability"][0]["CLASS "+classvalue];
+
+    var classvalue = response["Class value"][0]["CLASS"];
+    this.statusvalue = this.diabetesClass[classvalue];
+    this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
 
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
 
-    console.log("response test",(this.piechartdata),this.statusvalue,this.statuspercetage)
+    console.log("response test", (this.piechartdata), this.statusvalue, this.statuspercetage)
   }
+
+
 
 }
