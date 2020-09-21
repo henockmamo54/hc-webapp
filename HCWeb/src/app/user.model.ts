@@ -1,31 +1,31 @@
 export class User {
 
-    FPG: number=0;
-    hbalc: number=0;
-    gammagtp: number=0;
-    bmi: number=0;
-    triglycerides: number=0;
-    age: number=0;
-    uricacid: number=0;
+    FPG: number=124;
+    hbalc: number=6.8;
+    gammagtp: number=78;
+    bmi: number=15;
+    triglycerides: number=25;
+    age: number=45;
+    uricacid: number=5.5;
     sex: number=0;
-    physicalactivity: number=0;
-    drinking: number=0;
-    smoking: number=0;
+    physicalactivity: number=5;
+    drinking: number=2;
+    smoking: number=4;
     familyhistory: number=0;
 
-    creatinine: number=0;
-    serumGOT: number=0;
-    serumGPT: number=0;
-    alkphosphatse: number=0;
-    HDLcholesterol: number=0;
-    cardiacriskfactor: number=0;
-    BUNCREAratio: number=0;
-    WBC: number=0;
-    RBC: number=0;
-    hemoglobin: number=0;
-    height: number=0;
-    SBP: number=0;
-    DBP: number=0;
+    creatinine: number=1;
+    serumGOT: number=16;
+    serumGPT: number=16;
+    alkphosphatse: number=48;
+    HDLcholesterol: number=73;
+    cardiacriskfactor: number=3.1;
+    BUNCREAratio: number=12.5;
+    WBC: number=3.64;
+    RBC: number=3.76;
+    hemoglobin: number=12.6;
+    height: number=167;
+    SBP: number=130;
+    DBP: number=80;
 
 
 
