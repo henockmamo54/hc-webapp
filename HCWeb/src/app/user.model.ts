@@ -1,8 +1,8 @@
 export class User {
 
-    FPG: number=124;
-    hbalc: number=6.8;
-    gammagtp: number=78;
+    FPG: number=110;
+    hbalc: number=4.5;
+    gammagtp: number=45;
     bmi: number=15;
     triglycerides: number=25;
     age: number=45;
