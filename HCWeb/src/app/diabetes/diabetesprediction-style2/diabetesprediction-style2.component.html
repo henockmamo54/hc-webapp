@@ -17,13 +17,13 @@
                         <td></td>
                         <td></td>
                         <td style="text-align: center;">
-                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_nextyear" thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
+                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_nextyear" [foregroundColor]=gauge_nextyearforegroundColor thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
                             <br> {{gaugeLabel_nextyear}}
 
                         </td>
 
                         <td style="text-align: center;">
-                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_adjustednextyear" thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
+                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_adjustednextyear" [foregroundColor]=gauge_adjustednextyearforegroundColor thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
                             <br> {{gaugeLabel_adjustednextyear}}
                         </td>
                     </tr>
@@ -120,7 +120,7 @@
                     </tr>
                     <tr>
                         <td class="fname">Smoking: </td>
-                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.smoking"> </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.smoking"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.smoking"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="6" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.smoking" style="width: 90%;"></mat-slider>
