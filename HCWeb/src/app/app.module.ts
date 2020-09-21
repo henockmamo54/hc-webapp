@@ -18,7 +18,10 @@ import { BarchartComponent } from './charts/barchart/barchart.component';
 import { FinalPredictionHeaderValueComponent } from './final-prediction-header-value/final-prediction-header-value.component'; 
 import { GaugeChartModule } from 'angular-gauge-chart'
 import {MatTabsModule} from '@angular/material/tabs';
-import { DiabetespredictionStyle1Component } from './diabetes/diabetesprediction-style1/diabetesprediction-style1.component'
+import { DiabetespredictionStyle1Component } from './diabetes/diabetesprediction-style1/diabetesprediction-style1.component';
+import { DiabetespredictionStyle2Component } from './diabetes/diabetesprediction-style2/diabetesprediction-style2.component'
+import {MatTableModule} from '@angular/material/table';
+import { NgxGaugeModule } from 'ngx-gauge';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { DiabetespredictionStyle1Component } from './diabetes/diabetesprediction
     PredictionPieChartComponent,
     BarchartComponent,
     FinalPredictionHeaderValueComponent,
-    DiabetespredictionStyle1Component 
+    DiabetespredictionStyle1Component,
+    DiabetespredictionStyle2Component 
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { DiabetespredictionStyle1Component } from './diabetes/diabetesprediction
     MatRadioModule,
     HttpClientModule,
     GaugeChartModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule,
+    NgxGaugeModule
   ],
   providers: [ManageApiCallService, HttpClientModule],
   bootstrap: [AppComponent]
