@@ -43,20 +43,34 @@ export class PredictionComponent implements OnInit {
   constructor(private manageapi: ManageApiCallService, public httpClient: HttpClient) {
 
     this.ma = manageapi;
-    this.user = {
-      FPG: 150,
-      hbalc: 6.8,
-      gammagtp: 78,
-      bmi: 15,
-      triglycerides: 25,
-      age: 28,
-      uricacid: 5.5,
-      sex: 0,
-      physicalactivity: 5,
-      drinking: 2,
-      smoking: 4,
-      familyhistory: 1
-    }
+    this.user = new User();
+    this.user.FPG= 150;
+    this.user.hbalc= 6.8;
+    this.user.gammagtp= 78;
+    this.user.bmi= 15;
+    this.user.triglycerides= 25;
+    this.user.age= 28;
+    this.user.uricacid= 5.5;
+    this.user.sex= 0;
+    this.user.physicalactivity= 5;
+    this.user.drinking= 2;
+    this.user.smoking= 4;
+    this.user.familyhistory= 1;
+
+    // this.user = {
+    //   FPG: 150,
+    //   hbalc: 6.8,
+    //   gammagtp: 78,
+    //   bmi: 15,
+    //   triglycerides: 25,
+    //   age: 28,
+    //   uricacid: 5.5,
+    //   sex: 0,
+    //   physicalactivity: 5,
+    //   drinking: 2,
+    //   smoking: 4,
+    //   familyhistory: 1
+    // }
 
 
     this.formatuserData();

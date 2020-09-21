@@ -11,4 +11,21 @@ export class User {
     drinking: number;
     smoking: number;
     familyhistory: number;
+
+    creatinine: number;
+    serumGOT: number;
+    serumGPT: number;
+    alkphosphatse: number;
+    HDLcholesterol: number;
+    cardiacriskfactor: number;
+    BUNCREAratio: number;
+    WBC: number;
+    RBC: number;
+    hemoglobin: number;
+    height: number;
+    SBP: number;
+    DBP: number;
+
+
+
 }
