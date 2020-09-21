@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -6,16 +6,21 @@ import { Chart } from 'chart.js';
   templateUrl: './prediction-pie-chart.component.html',
   styleUrls: ['./prediction-pie-chart.component.css']
 })
-export class PredictionPieChartComponent implements OnInit, OnChanges {
+export class PredictionPieChartComponent implements OnInit, OnChanges, AfterViewInit {
 
-  @Input("data") piechartdata: any;
+  @Input("data") piechartdata: any; 
+  @ViewChild('mycanvas') canvas: ElementRef;
+  @Input("id") id: any;
   PieChart: any = [];
 
   constructor() {
   }
+  ngAfterViewInit(): void {
+    
+    this.InintPiechart();
+  }
 
   ngOnInit(): void {
-    this.InintPiechart();
   }
 
 
@@ -30,7 +35,7 @@ export class PredictionPieChartComponent implements OnInit, OnChanges {
 
   InintPiechart() {
 
-    this.PieChart = new Chart('mychart', {
+    this.PieChart = new Chart(this.canvas.nativeElement.getContext('2d'), {
       type: 'pie',
       data: {
         labels: ["Normal", "Prediabetes", "Diabetes"],
