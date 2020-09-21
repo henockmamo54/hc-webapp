@@ -41,6 +41,10 @@ mat-radio-button {
     margin: 10px;
 }
 
+.mat-tab-header {
+    background: whitesmoke !important;
+}
+
 
 /* ::ng-deep .mat-progress-bar-buffer {
     background: #E4E8EB;
