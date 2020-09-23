@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/user.model';
 
 @Component({
   selector: 'app-hyperlipidemia-prediction',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HyperlipidemiaPredictionComponent implements OnInit {
 
-  constructor() { }
+
+  constructor() { 
+
+
+  }
 
   ngOnInit(): void {
   }
+
 
 }

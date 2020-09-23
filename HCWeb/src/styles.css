@@ -96,3 +96,46 @@ th {
     border-style: solid;
     background: whitesmoke;
 }
+
+.mycontainer>div>span {
+    width: 50px;
+}
+
+.fname {
+    width: 15%;
+}
+
+.fvalue {
+    width: 10%;
+    text-align: center;
+}
+
+.fvalue>input {
+    text-align: center;
+    border: none !important;
+}
+
+mat-radio-button {
+    padding-right: 20px;
+}
+
+#loadingbar {
+    width: 100%;
+    object-fit: none;
+}
+
+.piechartcontainer {
+    height: 310px;
+}
+
+.progressbarcontainer {
+    min-height: 5px;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #FF4081;
+}
+
+.tabContentContainer {
+    margin: 10px;
+}

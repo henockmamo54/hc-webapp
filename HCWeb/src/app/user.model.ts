@@ -26,8 +26,7 @@ export class User {
     height: number=167;
     SBP: number=130;
     DBP: number=80;
-    hct: number=12;
-
+    hct: number=12;  
 
 
 }
