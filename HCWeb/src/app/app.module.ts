@@ -22,6 +22,7 @@ import { DiabetespredictionStyle1Component } from './diabetes/diabetesprediction
 import { DiabetespredictionStyle2Component } from './diabetes/diabetesprediction-style2/diabetesprediction-style2.component'
 import {MatTableModule} from '@angular/material/table';
 import { NgxGaugeModule } from 'ngx-gauge';
+import { HyperlipidemiaPredictionComponent } from './Hyperlipidemia/hyperlipidemia-prediction/hyperlipidemia-prediction.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NgxGaugeModule } from 'ngx-gauge';
     BarchartComponent,
     FinalPredictionHeaderValueComponent,
     DiabetespredictionStyle1Component,
-    DiabetespredictionStyle2Component 
+    DiabetespredictionStyle2Component,
+    HyperlipidemiaPredictionComponent 
   ],
   imports: [
     BrowserModule,
