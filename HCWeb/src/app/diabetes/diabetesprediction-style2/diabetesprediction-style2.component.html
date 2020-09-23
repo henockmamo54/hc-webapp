@@ -17,20 +17,18 @@
                         <td></td>
                         <td></td>
                         <td style="text-align: center;">
-                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_nextyear" [foregroundColor]=gauge_nextyearforegroundColor thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
+                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_nextyear" [foregroundColor]=gauge_nextyearforegroundColor thick=10 size=100 [append]="gaugeAppendText"> </ngx-gauge>
                             <br> {{gaugeLabel_nextyear}}
 
                         </td>
 
                         <td style="text-align: center;">
-                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_adjustednextyear" [foregroundColor]=gauge_adjustednextyearforegroundColor thick=10 size=120 [append]="gaugeAppendText"> </ngx-gauge>
+                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_adjustednextyear" [foregroundColor]=gauge_adjustednextyearforegroundColor thick=10 size=100 [append]="gaugeAppendText"> </ngx-gauge>
                             <br> {{gaugeLabel_adjustednextyear}}
                         </td>
                     </tr>
 
-                    <tr style="border: #4DB6AC;
-                        border-width: 2px 0;
-                        border-style: solid;">
+                    <tr class="tableheadercontainer">
                         <th style="text-align: left !important;">Feature</th>
                         <th>This Year Value</th>
                         <th>Next Year Predicted Value</th>
@@ -294,35 +292,30 @@
             <div class=" col-lg-6 col-sm-12 ">
                 <app-final-prediction-header-value class="card" style="height: 231px;" [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value>
             </div>
-            <br>
+
             <div class=" col-lg-6 col-sm-12 ">
                 <div class="card" style="height: 231px;">
                     <div class="progressbarcontainer">
                         <mat-progress-bar *ngIf="isloading" mode="indeterminate"></mat-progress-bar>
                     </div>
                     <app-prediction-pie-chart [(data)]="piechartdata" id="chartid2"></app-prediction-pie-chart>
-
-
                 </div>
-                <br>
             </div>
 
 
             <div class=" col-lg-6 col-sm-12">
                 <app-barchart id="agedistribution" [(data)]="age_counts" [(data_label)]="age_bin_edges" chartFeatureName="Age" [(currentValue)]="user.age" [(binIndex)]="agebin_index"></app-barchart>
-                <br>
+
             </div>
             <div class="col-lg-6 col-sm-12">
                 <app-barchart id="fpgdistribution" [(data)]="fpg_counts" [(data_label)]="fpg_bin_edges" chartFeatureName="FPG" [(currentValue)]="user.FPG" [(binIndex)]="fpgbin_index"></app-barchart>
-                <br>
+
             </div>
             <div class="col-lg-6 col-sm-12">
                 <app-barchart id="bmidistribution" [(data)]="age_counts" [(data_label)]="bmi_bin_edges" chartFeatureName="BMI" [(currentValue)]="user.bmi" [(binIndex)]="bmibin_index"></app-barchart>
-                <br>
+
             </div>
             <div class="col-lg-6 col-sm-12">
                 <app-barchart id="hbalcdistribution" [(data)]="age_counts" [(data_label)]="hbalc_bin_edges" chartFeatureName="HbA1c" [(currentValue)]="user.hbalc" [(binIndex)]="hba1cbin_index"></app-barchart>
-
-                <br>
             </div>
         </div>

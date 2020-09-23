@@ -13,7 +13,7 @@ export class FinalPredictionHeaderValueComponent implements OnInit, AfterViewIni
   @Input("input_status") input_status: any;
 
   status = "Diabetes"
-  public canvasWidth = 300
+  public canvasWidth = 100;
   public needleValue = 45
   public centralLabel = '65% '
   public name = ''
@@ -41,11 +41,12 @@ export class FinalPredictionHeaderValueComponent implements OnInit, AfterViewIni
   }
 
   ngOnInit(): void {
+    this.canvasWidth = document.getElementById('headerGaugeChartContainer').offsetWidth;
 
   }
 
   ngAfterViewInit(): void {
-
+    
   }
 
 }
