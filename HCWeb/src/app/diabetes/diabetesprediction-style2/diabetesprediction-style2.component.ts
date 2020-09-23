@@ -29,8 +29,8 @@ export class DiabetespredictionStyle2Component implements OnInit {
   gaugeValue_adjustednextyear = 28.3;
   gaugeLabel_nextyear = "Normal";
   gaugeLabel_adjustednextyear = "Normal";
-  gauge_nextyearforegroundColor="rgba(0, 150, 136, 1)";
-  gauge_adjustednextyearforegroundColor="rgba(0, 150, 136, 1)";
+  gauge_nextyearforegroundColor = "rgba(0, 150, 136, 1)";
+  gauge_adjustednextyearforegroundColor = "rgba(0, 150, 136, 1)";
 
   // chart data
   piechartdata: Array<number> = [25, 50, 25];
@@ -98,7 +98,8 @@ export class DiabetespredictionStyle2Component implements OnInit {
         "L190400": userdata.hemoglobin,
         "S000100": userdata.height,
         "S000501": userdata.SBP,
-        "S000502": userdata.DBP
+        "S000502": userdata.DBP,
+        "L190500": userdata.hct,
 
       }
     };
@@ -124,8 +125,8 @@ export class DiabetespredictionStyle2Component implements OnInit {
   afterNextYearValuePredictionDataReceived(response: any) {
 
     this.isNextYearPredictedValueloading = false;
-    this.nextyearuservalue.FPG = this.user.FPG;
 
+    this.nextyearuservalue.FPG = response["Next Year Value"][0]["L100800"].toFixed(2);
     this.nextyearuservalue.hbalc = response["Next Year Value"][0]["L104600"].toFixed(2);
     this.nextyearuservalue.gammagtp = response["Next Year Value"][0]["L101700"].toFixed(2);
     this.nextyearuservalue.bmi = response["Next Year Value"][0]["S000300"].toFixed(2);
@@ -165,7 +166,8 @@ export class DiabetespredictionStyle2Component implements OnInit {
   loadClasValueForAdjustedNextyearValues() {
 
     this.isNextYearPredictedValueloading = true;
-    this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClass", this.userFormatedValue,
+    //predictNextYearDiabeticClass
+    this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClassDirect", this.userFormatedValue,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -190,7 +192,7 @@ export class DiabetespredictionStyle2Component implements OnInit {
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
     this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
-  
+
 
   }
 
@@ -218,8 +220,8 @@ export class DiabetespredictionStyle2Component implements OnInit {
     this.loadClasValueForAdjustedNextyearValues()
 
   }
- 
- // histogram plot data
+
+  // histogram plot data
   loadHistogramData() {
 
     // this.isloading = true;
