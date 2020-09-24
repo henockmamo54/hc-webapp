@@ -27,6 +27,7 @@ import { HyperlipidemiaPredictionType1Component } from './Hyperlipidemia/hyperli
 import { IschemiaPredictionType1Component } from './Ischemia/ischemia-prediction-type1/ischemia-prediction-type1.component';
 import { IschemiaPredictionComponent } from './Ischemia/ischemia-prediction/ischemia-prediction.component';
 import { IschemiaPredictionType2Component } from './Ischemia/ischemia-prediction-type2/ischemia-prediction-type2.component';
+import { HyperlipidemiaPredictionType2Component } from './Hyperlipidemia/hyperlipidemia-prediction-type2/hyperlipidemia-prediction-type2.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { IschemiaPredictionType2Component } from './Ischemia/ischemia-prediction
     HyperlipidemiaPredictionType1Component,
     IschemiaPredictionType1Component,
     IschemiaPredictionComponent,
-    IschemiaPredictionType2Component 
+    IschemiaPredictionType2Component,
+    HyperlipidemiaPredictionType2Component 
   ],
   imports: [
     BrowserModule,

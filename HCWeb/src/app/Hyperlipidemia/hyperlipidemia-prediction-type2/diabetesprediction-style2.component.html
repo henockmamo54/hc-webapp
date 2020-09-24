@@ -1,0 +1,352 @@
+<div class="row tabContentContainer">
+
+
+    <div class="col-lg-6 col-sm-12">
+        <div class="card">
+
+            <div class="progressbarcontainer">
+                <mat-progress-bar *ngIf="isNextYearPredictedValueloading" mode="indeterminate"></mat-progress-bar>
+            </div>
+
+            <div class="card-body mycontainer">
+
+                <table>
+
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: center;">
+                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_nextyear" [foregroundColor]=gauge_nextyearforegroundColor thick=10 size=100 [append]="gaugeAppendText"> </ngx-gauge>
+                            <br> {{gaugeLabel_nextyear}}
+
+                        </td>
+
+                        <td style="text-align: center;">
+                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_adjustednextyear" [foregroundColor]=gauge_adjustednextyearforegroundColor thick=10 size=100 [append]="gaugeAppendText"> </ngx-gauge>
+                            <br> {{gaugeLabel_adjustednextyear}}
+                        </td>
+                    </tr>
+
+                    <tr class="tableheadercontainer">
+                        <th style="text-align: left !important;">Feature</th>
+                        <th>This Year Value</th>
+                        <th>Next Year Predicted Value</th>
+                        <th>Adjustable Next Year Value</th>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">FBG: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.FPG"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.FPG"> </td>
+                        <td class="fslider">
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.FPG" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">HbA1c: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.hbalc"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.hbalc"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="20" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.hbalc" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="fname">gamma GTP: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.gammagtp"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.gammagtp" style="width: 90%;"></mat-slider>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">BMI: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.bmi"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.bmi"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="50" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.bmi" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Triglycerides: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.triglycerides"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.triglycerides"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="300" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.triglycerides" style="width: 90%;"></mat-slider>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Uric acid: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.uricacid"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.uricacid"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.uricacid" style="width: 90%;"></mat-slider>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Age: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.age"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.age"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.age" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fname">Physical activity: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.physicalactivity">
+                        </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.physicalactivity">
+                        </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="7" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.physicalactivity" style="width: 90%;"></mat-slider>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="fname">Drinking: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.drinking"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.drinking"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="8" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.drinking" style="width: 90%;"></mat-slider>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="fname">Smoking: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.smoking"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.smoking"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="6" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.smoking" style="width: 90%;"></mat-slider>
+                        </td>
+
+
+                    </tr>
+                </table>
+                <table>
+
+                    <tr style=" vertical-align: -webkit-baseline-middle;">
+                        <td class="fname">Sex: </td>
+                        <td>
+                            <mat-radio-group (change)="onThisYearValueChanged()" class="radio" [(ngModel)]="user.sex">
+                                <mat-radio-button class="radio" [value]="0">Male</mat-radio-button>
+                                <mat-radio-button class="radio" [value]="1">Female</mat-radio-button>
+                            </mat-radio-group>
+
+                        </td>
+                        <td class="fname" style="width: auto !important;">Family history: </td>
+                        <td>
+
+                            <mat-radio-group (change)="onThisYearValueChanged()" class="radio" [(ngModel)]="user.familyhistory">
+                                <mat-radio-button class="radio" [value]="0">No</mat-radio-button>
+                                <mat-radio-button class="radio" [value]="1">Yes</mat-radio-button>
+                            </mat-radio-group>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+                <table>
+
+                    <tr>
+                        <td class="fname">Creatinine: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.creatinine">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">Serum GOT: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.serumGOT">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">Serum GPT: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.serumGPT">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">Alk.phosphatse: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.alkphosphatse">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">HDL-Cholesterol: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.HDLcholesterol">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">Cardiac risk factor: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.cardiacriskfactor">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">BUN / CREA ratio: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.BUNCREAratio">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">WBC: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.WBC">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">RBC: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.RBC">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">Hemoglobin: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.hemoglobin">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">Height: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.height">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">SBP: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.SBP">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">DBP: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.DBP">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="fname">HCT: </td>
+                        <td class="fvalue">
+                            <input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.hct">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        <br>
+    </div>
+
+
+    <div class="col-lg-6 col-sm-12">
+        <div class="row">
+            <div class=" row col-lg-12 col-sm-12">
+
+                <div class=" col-lg-5 col-sm-12 ">
+                    <app-final-prediction-header-value class="card" [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value>
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="5rem" viewBox="0 0 24 24" width="5rem">
+                                <path d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                            </div>
+                            <div class="col-8">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h3 style="margin-top:10px; margin-bottom: 0;">Age: {{user.age}}</h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h3 style="margin-top:10px;margin-bottom: 0.2rem;">Sex: {{user.sex}}</h3>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class=" col-lg-6 col-sm-12 ">
+                    <div class="card">
+                        <div class="progressbarcontainer">
+                            <mat-progress-bar *ngIf="isloading" mode="indeterminate"></mat-progress-bar>
+                        </div>
+                        <app-prediction-pie-chart [(data)]="piechartdata" id="chartid2"></app-prediction-pie-chart>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class=" col-lg-12 col-sm-12">
+                <app-barchart id="agedistribution" [(data)]="age_counts" [(data_label)]="age_bin_edges" chartFeatureName="Age" [(currentValue)]="user.age" [(binIndex)]="agebin_index"></app-barchart>
+
+            </div>
+
+            <div class="col-lg-12 col-sm-12">
+                <app-barchart id="fpgdistribution" [(data)]="fpg_counts" [(data_label)]="fpg_bin_edges" chartFeatureName="FPG" [(currentValue)]="user.FPG" [(binIndex)]="fpgbin_index"></app-barchart>
+
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <app-barchart id="bmidistribution" [(data)]="age_counts" [(data_label)]="bmi_bin_edges" chartFeatureName="BMI" [(currentValue)]="user.bmi" [(binIndex)]="bmibin_index"></app-barchart>
+
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <app-barchart id="hbalcdistribution" [(data)]="age_counts" [(data_label)]="hbalc_bin_edges" chartFeatureName="HbA1c" [(currentValue)]="user.hbalc" [(binIndex)]="hba1cbin_index"></app-barchart>
+            </div>
+        </div>
