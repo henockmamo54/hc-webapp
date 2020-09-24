@@ -5,12 +5,14 @@
 
             <div class="card-body mycontainer">
 
+
                 <tr>
-                    <td class="fname">gamma GTP: </td>
+                    <td class="fname">Age: </td>
                     <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="user.gammagtp" style="width: 90%;"></mat-slider>
+                        <mat-slider (change)="onSelectionChange()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="user.age" style="width: 90%;">
+                        </mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.age"> </td>
                 </tr>
 
                 <tr>
@@ -20,6 +22,42 @@
                         </mat-slider>
                     </td>
                     <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.bmi"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">Triglyceride: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.triglycerides" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.triglycerides"> </td>
+                </tr>
+
+
+                <tr>
+                    <td class="fname">CEA bowel disease: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.CEABowelDisease" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.CEABowelDisease"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">RBC: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.RBC" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.RBC"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">gamma GTP: </td>
+                    <td>
+                        <mat-slider (change)="onSelectionChange()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="user.gammagtp" style="width: 90%;"></mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
                 </tr>
 
 
@@ -51,23 +89,6 @@
 
 
                 <tr>
-                    <td class="fname">RBC: </td>
-                    <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.RBC" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.RBC"> </td>
-                </tr>
-
-                <tr>
-                    <td class="fname">Triglyceride: </td>
-                    <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.triglycerides" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.triglycerides"> </td>
-                </tr>
-                <tr>
                     <td class="fname">RBC distribution width: </td>
                     <td class="fslider">
                         <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.RBCDistributionWidth" style="width: 90%;">
@@ -75,25 +96,6 @@
                     </td>
                     <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.RBCDistributionWidth"> </td>
                 </tr>
-
-                <tr>
-                    <td class="fname">CEA bowel disease: </td>
-                    <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.CEABowelDisease" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.CEABowelDisease"> </td>
-                </tr>
-
-                <tr>
-                    <td class="fname">Age: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="user.age" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.age"> </td>
-                </tr>
-
 
                 <tr>
                     <td class="fname">Drinking: </td>

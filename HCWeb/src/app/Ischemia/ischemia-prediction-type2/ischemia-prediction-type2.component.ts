@@ -76,22 +76,21 @@ export class IschemiaPredictionType2Component implements OnInit {
     this.userFormatedValue = {
       "0": {
 
-        "L101700": this.user.gammagtp,
-        "S000300": this.user.bmi,
-        "L100700": this.user.uricacid,
-        "L103300": this.user.cardiacriskfactor,
-        "L103100": this.user.HDLcholesterol,
-        "L190300": this.user.RBC,
-        "L103000": this.user.triglycerides,
-        "L190900": this.user.RBCDistributionWidth,
-        "L504700": this.user.CEABowelDisease,
-        "AGE": this.user.age,
-        "SEX": this.user.sex,
-        "FIELD_33": this.user.smoking,
-        "FIELD_38": this.user.drinking,
-        "FIELD_15": this.user.diagnosedWithHighBloodPressure,
-        "FIELD_4": this.user.bloodtype,
-
+        "L101700": userdata.gammagtp,
+        "S000300": userdata.bmi,
+        "L100700": userdata.uricacid,
+        "L103300": userdata.cardiacriskfactor,
+        "L103100": userdata.HDLcholesterol,
+        "L190300": userdata.RBC,
+        "L103000": userdata.triglycerides,
+        "L190900": userdata.RBCDistributionWidth,
+        "L504700": userdata.CEABowelDisease,
+        "AGE": userdata.age,
+        "SEX": userdata.sex,
+        "FIELD_33": userdata.smoking,
+        "FIELD_38": userdata.drinking,
+        "FIELD_15": userdata.diagnosedWithHighBloodPressure,
+        "FIELD_4": userdata.bloodtype,
         "L100500": userdata.creatinine,
         "L100200": userdata.albumin,
         "L100800": userdata.FPG,
@@ -169,7 +168,7 @@ export class IschemiaPredictionType2Component implements OnInit {
 
     var percentageValue = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
     // this.needleValue = percentageValue;
-    this.needleValue =   Math.round((percentageValue + Number.EPSILON))
+    this.needleValue = Math.round((percentageValue + Number.EPSILON))
     this.centralLabel = percentageValue + "%";
     this.gaugeValue_nextyear = percentageValue;
     this.gaugeValue_adjustednextyear = percentageValue;
@@ -198,16 +197,16 @@ export class IschemiaPredictionType2Component implements OnInit {
 
     this.isNextYearPredictedValueloading = false;
 
-    var classvalue = response["Class value"][0]["CLASS"];    
+    var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.classValueLable[classvalue];
     this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
-    this.gaugeLabel_adjustednextyear = this.classValueLable[classvalue];     
-    
-    var percentageValue= 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
+    this.gaugeLabel_adjustednextyear = this.classValueLable[classvalue];
+
+    var percentageValue = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
     this.gaugeValue_adjustednextyear = percentageValue;
-    this.needleValue =   Math.round((percentageValue + Number.EPSILON))
+    this.needleValue = Math.round((percentageValue + Number.EPSILON))
     this.centralLabel = percentageValue + "%";
-    this.options.arcDelimiters= [percentageValue,]
+    this.options.arcDelimiters = [percentageValue,]
 
 
   }
