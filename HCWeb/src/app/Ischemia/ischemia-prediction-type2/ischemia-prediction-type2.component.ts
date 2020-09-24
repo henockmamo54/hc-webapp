@@ -194,6 +194,8 @@ export class IschemiaPredictionType2Component implements OnInit {
 
   afterpredictClasValueForAdjustedNextyearValues(response: any) {
 
+    console.log("/*/*/*/*/*/*/*/*/*/*/*//*/", response)
+
     this.isNextYearPredictedValueloading = false;
 
     var classvalue = response["Class value"][0]["CLASS"];    
@@ -205,6 +207,7 @@ export class IschemiaPredictionType2Component implements OnInit {
     this.gaugeValue_adjustednextyear = percentageValue;
     this.needleValue =   Math.round((percentageValue + Number.EPSILON))
     this.centralLabel = percentageValue + "%";
+    this.options.arcDelimiters= [percentageValue,]
 
 
   }
