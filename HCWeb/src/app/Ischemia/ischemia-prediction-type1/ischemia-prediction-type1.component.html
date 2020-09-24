@@ -41,7 +41,7 @@
                 </tr>
 
                 <tr>
-                    <td class="fname">HDL-Cholesterol:: </td>
+                    <td class="fname">HDL-Cholesterol: </td>
                     <td class="fslider">
                         <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.HDLcholesterol" style="width: 90%;">
                         </mat-slider>
@@ -79,10 +79,10 @@
                 <tr>
                     <td class="fname">CEA bowel disease: </td>
                     <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.serumGPT" style="width: 90%;">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.CEABowelDisease" style="width: 90%;">
                         </mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.serumGPT"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.CEABowelDisease"> </td>
                 </tr>
 
                 <tr>
@@ -127,7 +127,7 @@
                 </tr>
 
                 <tr>
-                    <td class="fname">diagnosed with high blood pressure: </td>
+                    <td class="fname">Diagnosed with high blood pressure: </td>
                     <td>
                         <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.diagnosedWithHighBloodPressure">
                             <mat-radio-button class="radio" [value]="0">No</mat-radio-button>
