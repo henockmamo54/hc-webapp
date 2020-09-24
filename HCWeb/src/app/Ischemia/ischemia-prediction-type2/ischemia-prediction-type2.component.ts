@@ -18,7 +18,7 @@ export class IschemiaPredictionType2Component implements OnInit {
 
 
   public canvasWidth = 300;
-  public needleValue = 45
+  public needleValue = 90
   public centralLabel = '65% '
   public name = ''
   public bottomLabel = ''
@@ -27,9 +27,9 @@ export class IschemiaPredictionType2Component implements OnInit {
     needleColor: 'gray',
     needleUpdateSpeed: 1000,
     arcColors: ['#4db6ac', 'lightgray'],
-    arcDelimiters: [73,],
+    arcDelimiters: [65,],
     rangeLabel: ['0', '100'],
-    needleStartValue: 96,
+    needleStartValue: 0,
   }
 
 
@@ -168,7 +168,8 @@ export class IschemiaPredictionType2Component implements OnInit {
 
 
     var percentageValue = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
-    this.needleValue = percentageValue;
+    // this.needleValue = percentageValue;
+    this.needleValue =   Math.round((percentageValue + Number.EPSILON))
     this.centralLabel = percentageValue + "%";
     this.gaugeValue_nextyear = percentageValue;
     this.gaugeValue_adjustednextyear = percentageValue;
@@ -195,16 +196,15 @@ export class IschemiaPredictionType2Component implements OnInit {
 
     this.isNextYearPredictedValueloading = false;
 
-    var classvalue = response["Class value"][0]["CLASS"];
-    // this.gaugeLabel_adjustednextyear = this.diabetesClass[classvalue];
-    // this.gauge_adjustednextyearforegroundColor = this.diabetesClass_colors[classvalue];
-
-    var classvalue = response["Class value"][0]["CLASS"];
-    // this.statusvalue = this.diabetesClass[classvalue];
+    var classvalue = response["Class value"][0]["CLASS"];    
+    this.statusvalue = this.classValueLable[classvalue];
     this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
-    // this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
-
-    this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
+    this.gaugeLabel_adjustednextyear = this.classValueLable[classvalue];     
+    
+    var percentageValue= 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
+    this.gaugeValue_adjustednextyear = percentageValue;
+    this.needleValue =   Math.round((percentageValue + Number.EPSILON))
+    this.centralLabel = percentageValue + "%";
 
 
   }
