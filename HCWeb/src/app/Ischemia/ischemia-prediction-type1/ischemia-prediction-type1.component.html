@@ -1,1 +1,173 @@
-<p>ischemia-prediction-type1 works!</p>
+<div class="row tabContentContainer">
+
+    <div class="col-lg-5 col-sm-12">
+        <div class="card">
+
+            <div class="card-body mycontainer">
+
+                <tr>
+                    <td class="fname">gamma GTP: </td>
+                    <td>
+                        <mat-slider (change)="onSelectionChange()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="user.gammagtp" style="width: 90%;"></mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">BMI: </td>
+                    <td>
+                        <mat-slider (change)="onSelectionChange()" min="1" max="50" step="1" thumbLabel={{1}} [(value)]="user.bmi" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.bmi"> </td>
+                </tr>
+
+
+                <tr>
+                    <td class="fname">Uric acid: </td>
+                    <td>
+                        <mat-slider (change)="onSelectionChange()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="user.uricacid" style="width: 90%;"></mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.uricacid"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">Cardiac risk factor: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="0" max="10" step="0.5" thumbLabel={{1}} [(value)]="user.cardiacriskfactor" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.cardiacriskfactor"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">HDL-Cholesterol:: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.HDLcholesterol" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.HDLcholesterol"> </td>
+                </tr>
+
+
+                <tr>
+                    <td class="fname">RBC: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.RBC" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.RBC"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">Triglyceride: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.triglycerides" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.triglycerides"> </td>
+                </tr>
+                <tr>
+                    <td class="fname">RBC distribution width: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.RBCDistributionWidth" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.RBCDistributionWidth"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">CEA bowel disease: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.serumGPT" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.serumGPT"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">Age: </td>
+                    <td>
+                        <mat-slider (change)="onSelectionChange()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="user.age" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.age"> </td>
+                </tr>
+
+
+                <tr>
+                    <td class="fname">Drinking: </td>
+                    <td>
+                        <mat-slider (change)="onSelectionChange()" min="0" max="8" step="1" thumbLabel={{1}} [(value)]="user.drinking" style="width: 90%;"></mat-slider>
+                    </td>
+
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.drinking"> </td>
+                </tr>
+                <tr>
+                    <td class="fname">Smoking: </td>
+                    <td>
+                        <mat-slider (change)="onSelectionChange()" min="0" max="6" step="1" thumbLabel={{1}} [(value)]="user.smoking" style="width: 90%;"></mat-slider>
+                    </td>
+
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.smoking"> </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">Sex: </td>
+                    <td>
+                        <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.sex">
+                            <mat-radio-button class="radio" [value]="0">Male</mat-radio-button>
+                            <mat-radio-button class="radio" [value]="1">Female</mat-radio-button>
+                        </mat-radio-group>
+
+                    </td>
+                    <td class="fvalue">
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="fname">diagnosed with high blood pressure: </td>
+                    <td>
+                        <mat-radio-group (change)="onSelectionChange()" class="radio" [(ngModel)]="user.diagnosedWithHighBloodPressure">
+                            <mat-radio-button class="radio" [value]="0">No</mat-radio-button>
+                            <mat-radio-button class="radio" [value]="1">Yes</mat-radio-button>
+                        </mat-radio-group>
+
+                    </td>
+                    <td class="fvalue">
+
+                    </td>
+                </tr>
+
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div class="   col-lg-4 col-sm-12">
+
+        <div class="card">
+
+            <div class="row ">
+
+                <div class="col-lg-6  col-sm-12" id="headerGaugeChartContainer">
+                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options" [name]="name" [bottomLabel]="bottomLabel"></rg-gauge-chart>
+                </div>
+
+                <div class="col-lg-4 col-sm-12" style="margin: auto;
+            width: 50%; 
+            font-weight: 700;">
+                    <h3 style="margin: 0;"> Status</h3>
+                    <hr style="margin-top: 0.4rem !important;
+                margin-bottom: 0.4rem !important;
+                margin-right: 0.2rem !important;">
+                    <h3 style="margin: 0;">{{status}}</h3>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
