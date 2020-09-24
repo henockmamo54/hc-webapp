@@ -63,7 +63,7 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
 
   }
 
-  classValueLable = ["Positive", "Negative"];
+  classValueLable = [ "Negative","Positive"];
   afterDataReceived(response: Object) {
     this.isloading = false;
     var classvalue = response["Class value"][0]["CLASS"];

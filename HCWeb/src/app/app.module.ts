@@ -24,6 +24,8 @@ import {MatTableModule} from '@angular/material/table';
 import { NgxGaugeModule } from 'ngx-gauge';
 import { HyperlipidemiaPredictionComponent } from './Hyperlipidemia/hyperlipidemia-prediction/hyperlipidemia-prediction.component';
 import { HyperlipidemiaPredictionType1Component } from './Hyperlipidemia/hyperlipidemia-prediction-type1/hyperlipidemia-prediction-type1.component';
+import { IschemiaPredictionType1Component } from './Ischemia/ischemia-prediction-type1/ischemia-prediction-type1.component';
+import { IschemiaPredictionComponent } from './Ischemia/ischemia-prediction/ischemia-prediction.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { HyperlipidemiaPredictionType1Component } from './Hyperlipidemia/hyperli
     DiabetespredictionStyle1Component,
     DiabetespredictionStyle2Component,
     HyperlipidemiaPredictionComponent,
-    HyperlipidemiaPredictionType1Component 
+    HyperlipidemiaPredictionType1Component,
+    IschemiaPredictionType1Component,
+    IschemiaPredictionComponent 
   ],
   imports: [
     BrowserModule,
