@@ -5,14 +5,27 @@
 
             <div class="card-body mycontainer">
 
+
                 <tr>
-                    <td class="fname">FBG: </td>
+                    <td class="fname">Cardiac risk factor: </td>
                     <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.FPG" style="width: 90%;">
+                        <mat-slider (change)="onSelectionChange()" min="0" max="10" step="0.5" thumbLabel={{1}} [(value)]="user.cardiacriskfactor" style="width: 90%;">
                         </mat-slider>
                     </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.FPG"> </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.cardiacriskfactor"> </td>
                 </tr>
+
+
+                <tr>
+                    <td class="fname">HDL-Cholesterol:: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.HDLcholesterol" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.HDLcholesterol"> </td>
+                </tr>
+
+
 
                 <tr>
                     <td class="fname">gamma GTP: </td>
@@ -21,6 +34,16 @@
                     </td>
                     <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
                 </tr>
+
+                <tr>
+                    <td class="fname">Serum GPT: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.serumGPT" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.serumGPT"> </td>
+                </tr>
+
                 <tr>
                     <td class="fname">BMI: </td>
                     <td>
@@ -31,19 +54,21 @@
                 </tr>
 
                 <tr>
-                    <td class="fname">Uric acid: </td>
-                    <td>
-                        <mat-slider (change)="onSelectionChange()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="user.uricacid" style="width: 90%;"></mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.uricacid"> </td>
-                </tr>
-                <tr>
                     <td class="fname">Age: </td>
                     <td>
                         <mat-slider (change)="onSelectionChange()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="user.age" style="width: 90%;">
                         </mat-slider>
                     </td>
                     <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.age"> </td>
+                </tr>
+
+
+                <tr>
+                    <td class="fname">Uric acid: </td>
+                    <td>
+                        <mat-slider (change)="onSelectionChange()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="user.uricacid" style="width: 90%;"></mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.uricacid"> </td>
                 </tr>
 
                 <tr>
@@ -56,6 +81,16 @@
                 </tr>
 
                 <tr>
+                    <td class="fname">FBG: </td>
+                    <td class="fslider">
+                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.FPG" style="width: 90%;">
+                        </mat-slider>
+                    </td>
+                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.FPG"> </td>
+                </tr>
+
+
+                <tr>
                     <td class="fname">RBC: </td>
                     <td class="fslider">
                         <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.RBC" style="width: 90%;">
@@ -63,30 +98,7 @@
                     </td>
                     <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.RBC"> </td>
                 </tr>
-                <tr>
-                    <td class="fname">Serum GPT: </td>
-                    <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.serumGPT" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.serumGPT"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">Cardiac risk factor: </td>
-                    <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="0" max="10" step="0.5" thumbLabel={{1}} [(value)]="user.cardiacriskfactor" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.cardiacriskfactor"> </td>
-                </tr>
-                <tr>
-                    <td class="fname">HDL-Cholesterol:: </td>
-                    <td class="fslider">
-                        <mat-slider (change)="onSelectionChange()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="user.HDLcholesterol" style="width: 90%;">
-                        </mat-slider>
-                    </td>
-                    <td class="fvalue"><input type="text" (change)="onSelectionChange()" class="form-control" [(ngModel)]="user.HDLcholesterol"> </td>
-                </tr>
+
 
 
                 <tr>

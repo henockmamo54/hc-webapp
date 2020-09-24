@@ -59,20 +59,20 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {user: Use
     this.userFormatedValue = {
       "0": {
 
-        "L100800": this.user.FPG,
-        "L101700": this.user.gammagtp,
-        "L100700": this.user.uricacid,
-        "S000300": this.user.bmi,
-        "L190500": this.user.hct,
-        "L190300": this.user.RBC,
-        "L101300": this.user.serumGPT,
-        "L103300": this.user.cardiacriskfactor,
-        "L103100": this.user.HDLcholesterol,
-        "AGE": this.user.age,
-        "SEX": this.user.sex,
-        "FIELD_33": this.user.smoking,
-        "FIELD_38": this.user.drinking,
-        "FIELD_40": this.user.physicalactivity,             
+        "L100800": userdata.FPG,
+        "L101700": userdata.gammagtp,
+        "L100700": userdata.uricacid,
+        "S000300": userdata.bmi,
+        "L190500": userdata.hct,
+        "L190300": userdata.RBC,
+        "L101300": userdata.serumGPT,
+        "L103300": userdata.cardiacriskfactor,
+        "L103100": userdata.HDLcholesterol,
+        "AGE": userdata.age,
+        "SEX": userdata.sex,
+        "FIELD_33": userdata.smoking,
+        "FIELD_38": userdata.drinking,
+        "FIELD_40": userdata.physicalactivity,             
         "L100500": userdata.creatinine,
         "L101200": userdata.serumGOT, 
         "L102900": userdata.totalCholesterol,         
@@ -168,6 +168,8 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {user: Use
 
   afterpredictClasValueForAdjustedNextyearValues(response: any) {
 
+    console.log("*************/////////*/*/*/*/*/*/*",this.userFormatedValue,response);
+
     this.isNextYearPredictedValueloading = false;
 
     var classvalue = response["Class value"][0]["CLASS"];
@@ -193,7 +195,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {user: Use
   }
 
   onPredictedValueAdjusted() {
-    console.log("on value adjusted");
+    console.log("on value adjusted",this.nextyearadjustedvalue);
 
     this.formatuserData(this.nextyearadjustedvalue);
     this.loadClasValueForAdjustedNextyearValues()

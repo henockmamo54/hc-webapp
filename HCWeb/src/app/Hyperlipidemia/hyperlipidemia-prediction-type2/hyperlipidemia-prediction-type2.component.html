@@ -35,15 +35,26 @@
                         <th>Adjustable Next Year Value</th>
                     </tr>
 
+
                     <tr>
-                        <td class="fname">FBG: </td>
-                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.FPG"> </td>
-                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.FPG"> </td>
-                        <td class="fslider">
-                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.FPG" style="width: 90%;">
+                        <td class="fname">Cardiac risk factor: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.cardiacriskfactor"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.cardiacriskfactor"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.cardiacriskfactor" style="width: 90%;"></mat-slider>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="fname">HDL-Cholesterol: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.HDLcholesterol"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.HDLcholesterol"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.HDLcholesterol" style="width: 90%;">
                             </mat-slider>
                         </td>
                     </tr>
+
 
                     <tr>
                         <td class="fname">gamma GTP: </td>
@@ -53,6 +64,17 @@
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.gammagtp" style="width: 90%;"></mat-slider>
                         </td>
                     </tr>
+
+
+                    <tr>
+                        <td class="fname">Serum GPT: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.serumGPT"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.serumGPT"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.serumGPT" style="width: 90%;"></mat-slider>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td class="fname">BMI: </td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.bmi"> </td>
@@ -62,6 +84,19 @@
                             </mat-slider>
                         </td>
                     </tr>
+
+
+                    <tr>
+                        <td class="fname">Age: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.age"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.age"> </td>
+                        <td>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.age" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                    </tr>
+
+
 
                     <tr>
                         <td class="fname">Uric acid: </td>
@@ -82,6 +117,15 @@
                         </td>
                     </tr>
 
+                    <tr>
+                        <td class="fname">FBG: </td>
+                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.FPG"> </td>
+                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.FPG"> </td>
+                        <td class="fslider">
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.FPG" style="width: 90%;">
+                            </mat-slider>
+                        </td>
+                    </tr>
 
                     <tr>
                         <td class="fname">RBC: </td>
@@ -93,45 +137,6 @@
                     </tr>
 
 
-                    <tr>
-                        <td class="fname">Serum GPT: </td>
-                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.serumGPT"> </td>
-                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.serumGPT"> </td>
-                        <td>
-                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.serumGPT" style="width: 90%;"></mat-slider>
-                        </td>
-                    </tr>
-
-
-
-                    <tr>
-                        <td class="fname">Cardiac risk factor: </td>
-                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.cardiacriskfactor"> </td>
-                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.cardiacriskfactor"> </td>
-                        <td>
-                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.cardiacriskfactor" style="width: 90%;"></mat-slider>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="fname">Age: </td>
-                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.age"> </td>
-                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.age"> </td>
-                        <td>
-                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.age" style="width: 90%;">
-                            </mat-slider>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="fname">HDL-Cholesterol: </td>
-                        <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.HDLcholesterol"> </td>
-                        <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.HDLcholesterol"> </td>
-                        <td>
-                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.HDLcholesterol" style="width: 90%;">
-                            </mat-slider>
-                        </td>
-                    </tr>
 
                     <tr>
                         <td class="fname">Physical activity: </td>
