@@ -14,9 +14,9 @@ export class IschemiaPredictionType2Component implements OnInit {
   thisyearuservalue: User;
   nextyearuservalue: User;
   nextyearadjustedvalue: User;
+  classValueLable = ["Negative", "Positive"];
 
 
-  status = "Normal"
   public canvasWidth = 300;
   public needleValue = 45
   public centralLabel = '65% '
@@ -76,35 +76,42 @@ export class IschemiaPredictionType2Component implements OnInit {
     this.userFormatedValue = {
       "0": {
 
+        "L101700": this.user.gammagtp,
+        "S000300": this.user.bmi,
+        "L100700": this.user.uricacid,
+        "L103300": this.user.cardiacriskfactor,
+        "L103100": this.user.HDLcholesterol,
+        "L190300": this.user.RBC,
+        "L103000": this.user.triglycerides,
+        "L190900": this.user.RBCDistributionWidth,
+        "L504700": this.user.CEABowelDisease,
+        "AGE": this.user.age,
+        "SEX": this.user.sex,
+        "FIELD_33": this.user.smoking,
+        "FIELD_38": this.user.drinking,
+        "FIELD_15": this.user.diagnosedWithHighBloodPressure,
+        "FIELD_4": this.user.bloodtype,
 
-
-        
-        "L100800": userdata.FPG,
-        "L104600": userdata.hbalc,
-        "L100700": userdata.uricacid,
-        "S000300": userdata.bmi,
-        "L103000": userdata.triglycerides,
-        "AGE": userdata.age,
-        "L101700": userdata.gammagtp,
-        "SEX": userdata.sex,
-        "FIELD_31": userdata.familyhistory,
-        "FIELD_33": userdata.smoking,
-        "FIELD_38": userdata.drinking,
-        "FIELD_40": userdata.physicalactivity,
         "L100500": userdata.creatinine,
+        "L100200": userdata.albumin,
+        "L100800": userdata.FPG,
         "L101200": userdata.serumGOT,
         "L101300": userdata.serumGPT,
         "L101600": userdata.alkphosphatse,
-        "L103100": userdata.HDLcholesterol,
-        "L103300": userdata.cardiacriskfactor,
-        "L107400": userdata.BUNCREAratio,
+        "L102900": userdata.totalCholesterol,
+        "L103200": userdata.LDLcholesterol,
+        "L104300": userdata.iron,
+        "L104400": userdata.TIBC,
+        "L104500": userdata.UIBC,
         "L190000": userdata.WBC,
-        "L190300": userdata.RBC,
         "L190400": userdata.hemoglobin,
+        "L190500": userdata.hct,
+        "L190600": userdata.MCV,
+        "L190700": userdata.MCH,
+        "L190800": userdata.MCHC,
         "S000100": userdata.height,
         "S000501": userdata.SBP,
         "S000502": userdata.DBP,
-        "L190500": userdata.hct,
 
       }
     };
@@ -116,7 +123,7 @@ export class IschemiaPredictionType2Component implements OnInit {
   loadNextYearPredictedFeatureValues() {
 
     this.isNextYearPredictedValueloading = true;
-    this.httpClient.post("http://127.0.0.1:5000/predictDiabeticNextYearValue", this.userFormatedValue,
+    this.httpClient.post("http://127.0.0.1:5000/predictIschemiaNextYearValue", this.userFormatedValue,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -131,48 +138,49 @@ export class IschemiaPredictionType2Component implements OnInit {
 
     this.isNextYearPredictedValueloading = false;
 
-    this.nextyearuservalue.FPG = response["Next Year Value"][0]["L100800"].toFixed(2);
-    this.nextyearuservalue.hbalc = response["Next Year Value"][0]["L104600"].toFixed(2);
     this.nextyearuservalue.gammagtp = response["Next Year Value"][0]["L101700"].toFixed(2);
     this.nextyearuservalue.bmi = response["Next Year Value"][0]["S000300"].toFixed(2);
-    this.nextyearuservalue.triglycerides = response["Next Year Value"][0]["L103000"].toFixed(2);
     this.nextyearuservalue.uricacid = response["Next Year Value"][0]["L100700"].toFixed(2);
+    this.nextyearuservalue.cardiacriskfactor = response["Next Year Value"][0]["L103300"].toFixed(2);
+    this.nextyearuservalue.HDLcholesterol = response["Next Year Value"][0]["L103100"].toFixed(2);
+    this.nextyearuservalue.RBC = response["Next Year Value"][0]["L190300"].toFixed(2);
+    this.nextyearuservalue.triglycerides = response["Next Year Value"][0]["L103000"].toFixed(2);
+    this.nextyearuservalue.RBCDistributionWidth = response["Next Year Value"][0]["L190900"].toFixed(2);
+    this.nextyearuservalue.CEABowelDisease = response["Next Year Value"][0]["L504700"].toFixed(2);
     this.nextyearuservalue.age = response["Next Year Value"][0]["AGE"];
-    this.nextyearuservalue.physicalactivity = this.user.physicalactivity;
+    this.nextyearuservalue.diagnosedWithHighBloodPressure = response["Next Year Value"][0]["FIELD_15"];
     this.nextyearuservalue.sex = this.user.sex;
     this.nextyearuservalue.smoking = this.user.smoking;
     this.nextyearuservalue.drinking = this.user.drinking;
-    this.nextyearuservalue.familyhistory = this.user.familyhistory;
 
 
 
     var classvalue = response["Class value"][0]["CLASS"];
-    // this.gaugeLabel_nextyear = this.diabetesClass[classvalue];
-    // this.gauge_nextyearforegroundColor = this.diabetesClass_colors[classvalue];
-
-    // this.gaugeLabel_adjustednextyear = this.diabetesClass[classvalue];
-    // this.gauge_adjustednextyearforegroundColor = this.diabetesClass_colors[classvalue];
+    this.gaugeLabel_nextyear = this.classValueLable[classvalue];
+    this.gaugeLabel_adjustednextyear = this.classValueLable[classvalue];
 
 
 
 
     var classvalue = response["Class value"][0]["CLASS"];
-    // this.statusvalue = this.diabetesClass[classvalue];
+    this.statusvalue = this.classValueLable[classvalue];
     this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
-    // this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
 
-    this.gaugeValue_nextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
-    this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
+    var percentageValue = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
+    this.needleValue = percentageValue;
+    this.centralLabel = percentageValue + "%";
+    this.gaugeValue_nextyear = percentageValue;
+    this.gaugeValue_adjustednextyear = percentageValue;
 
-    this.nextyearadjustedvalue = cloneDeep(this.nextyearuservalue);
+    // this.nextyearadjustedvalue = cloneDeep(this.nextyearuservalue);
   }
 
   loadClasValueForAdjustedNextyearValues() {
 
     this.isNextYearPredictedValueloading = true;
     //predictNextYearDiabeticClass
-    this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClassDirect", this.userFormatedValue,
+    this.httpClient.post("http://127.0.0.1:5000/predictIschemiaNextYearClass", this.userFormatedValue,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
