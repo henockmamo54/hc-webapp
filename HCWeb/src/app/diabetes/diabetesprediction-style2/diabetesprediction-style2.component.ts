@@ -17,6 +17,9 @@ export class DiabetespredictionStyle2Component implements OnInit {
   diabetesClass = ["Normal", "Prediabetes", "Diabetes"];
   diabetesClass_colors = ["rgb(156,204,102)", "rgb(39,166,154)", "rgb(70,91,101)"];
 
+  diabetesTestUserData: any;
+  selectedPerson = 0;
+
 
   userFormatedValue: any;
   isloading: boolean = false;
@@ -57,12 +60,13 @@ export class DiabetespredictionStyle2Component implements OnInit {
     this.nextyearuservalue = cloneDeep(this.user);
     this.nextyearadjustedvalue = cloneDeep(this.user);
 
+    this.loadDiabtesTestData()
 
 
-    this.formatuserData(this.user);
-    this.loadHistogramData();
+    // this.formatuserData(this.user);
+    // this.loadHistogramData();
 
-    this.loadNextYearPredictedFeatureValues();
+    // this.loadNextYearPredictedFeatureValues();
 
   }
 
@@ -270,6 +274,82 @@ export class DiabetespredictionStyle2Component implements OnInit {
 
   }
 
+
+
+  loadDiabtesTestData() {
+    this.httpClient.post("http://127.0.0.1:5000/getDiabetesTestData",
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }).subscribe(((response) => {
+        var response = response;
+        setTimeout(() => { this.afterloadDiabtesTestData(response); }, 500);
+      }));
+  }
+
+  afterloadDiabtesTestData(response: any) {
+
+
+    var persons: any = []
+    for (var i = 0; i < 30; i++) {
+      var p: User = new User();
+      p.name = "Person " + (i + 1) + " - " + this.diabetesClass[Number(response[i]["CLASS"])];
+      p.id = i;
+      p.age = response[i]["AGE"];
+      p.familyhistory = response[i]["FIELD_31"];
+      p.smoking = response[i]["FIELD_33"];
+      p.drinking = response[i]["FIELD_38"];
+      p.physicalactivity = response[i]["FIELD_40"];
+      p.creatinine = response[i]["L100500"];
+      p.uricacid = response[i]["L100700"];
+      p.FPG = response[i]["L100800"];
+      p.serumGOT = response[i]["L101200"];
+      p.serumGPT = response[i]["L101300"];
+      p.alkphosphatse = response[i]["L101600"];
+      p.gammagtp = response[i]["L101700"];
+      p.triglycerides = response[i]["L103000"];
+      p.HDLcholesterol = response[i]["L103100"];
+      p.cardiacriskfactor = response[i]["L103300"];
+      p.hbalc = response[i]["L104600"];
+      p.BUNCREAratio = response[i]["L107400"];
+      p.WBC = response[i]["L190000"];
+      p.RBC = response[i]["L190300"];
+      p.hemoglobin = response[i]["L190400"];
+      p.height = response[i]["S000100"];
+      p.bmi = response[i]["S000300"];
+      p.SBP = response[i]["S000501"];
+      p.DBP = response[i]["S000502"];
+      p.sex = response[i]["SEX"];
+      persons[i] = p;
+    }
+
+    this.diabetesTestUserData = persons;
+    console.log(persons, '//////////////////////////////////////', response[0].length, 54544, response[0])
+    this.user = this.diabetesTestUserData[0];
+
+
+    this.formatuserData(this.user);
+    this.loadHistogramData();
+
+    this.loadNextYearPredictedFeatureValues();
+
+
+
+
+  }
+
+  newUserSelected() {
+
+    this.user = this.diabetesTestUserData[this.selectedPerson];
+
+
+    this.formatuserData(this.user);
+    this.loadHistogramData();
+
+    this.loadNextYearPredictedFeatureValues();
+
+  }
 
 
 

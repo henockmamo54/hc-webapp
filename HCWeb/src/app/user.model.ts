@@ -1,5 +1,7 @@
 export class User {
 
+    name:string="person1";
+    id:number=4444;
     FPG: number = 110;
     hbalc: number = 4.5;
     gammagtp: number = 45;

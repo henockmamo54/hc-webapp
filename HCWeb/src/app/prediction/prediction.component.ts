@@ -56,6 +56,7 @@ export class PredictionComponent implements OnInit {
     this.user.drinking= 2;
     this.user.smoking= 4;
     this.user.familyhistory= 1;
+    
 
     // this.user = {
     //   FPG: 150,

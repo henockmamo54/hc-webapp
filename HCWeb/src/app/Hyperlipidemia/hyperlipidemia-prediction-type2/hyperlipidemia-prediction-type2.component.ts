@@ -202,4 +202,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {user: Use
 
   }  
 
+  
+
+  
 }

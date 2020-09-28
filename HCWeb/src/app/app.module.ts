@@ -28,6 +28,7 @@ import { IschemiaPredictionType1Component } from './Ischemia/ischemia-prediction
 import { IschemiaPredictionComponent } from './Ischemia/ischemia-prediction/ischemia-prediction.component';
 import { IschemiaPredictionType2Component } from './Ischemia/ischemia-prediction-type2/ischemia-prediction-type2.component';
 import { HyperlipidemiaPredictionType2Component } from './Hyperlipidemia/hyperlipidemia-prediction-type2/hyperlipidemia-prediction-type2.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { HyperlipidemiaPredictionType2Component } from './Hyperlipidemia/hyperli
     GaugeChartModule,
     MatTabsModule,
     MatTableModule,
-    NgxGaugeModule
+    NgxGaugeModule,
+    MatSelectModule
   ],
   providers: [ManageApiCallService, HttpClientModule],
   bootstrap: [AppComponent]
