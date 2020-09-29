@@ -17,6 +17,10 @@ export class DiabetespredictionStyle1Component implements OnInit {
   statusvalue: any;
   statuspercetage: number;
 
+  
+  diabetesTestUserData: any;
+  selectedPerson = 0;
+
   // chart data
   piechartdata: Array<number> = [25, 50, 25];
   age_counts: any;
@@ -37,38 +41,14 @@ export class DiabetespredictionStyle1Component implements OnInit {
   constructor(private manageapi: ManageApiCallService, public httpClient: HttpClient) {
 
     this.ma = manageapi;
-    this.user = new User();
-    this.user.FPG= 150;
-    this.user.hbalc= 6.8;
-    this.user.gammagtp= 78;
-    this.user.bmi= 15;
-    this.user.triglycerides= 25;
-    this.user.age= 28;
-    this.user.uricacid= 5.5;
-    this.user.sex= 0;
-    this.user.physicalactivity= 5;
-    this.user.drinking= 2;
-    this.user.smoking= 4;
-    this.user.familyhistory= 1;
-    // this.user = {
-    //   FPG: 150,
-    //   hbalc: 6.8,
-    //   gammagtp: 78,
-    //   bmi: 15,
-    //   triglycerides: 25,
-    //   age: 28,
-    //   uricacid: 5.5,
-    //   sex: 0,
-    //   physicalactivity: 5,
-    //   drinking: 2,
-    //   smoking: 4,
-    //   familyhistory: 1
-    // }
+    this.user = new User(); 
 
-
-    this.formatuserData();
-    this.loadData();
-    this.loadHistogramData();
+    
+    this.loadDiabtesTestData()
+    
+    // this.formatuserData();
+    // this.loadData();
+    // this.loadHistogramData();
 
   }
 
@@ -194,5 +174,81 @@ export class DiabetespredictionStyle1Component implements OnInit {
 
     console.log("response test",(this.piechartdata),this.statusvalue,this.statuspercetage)
   }
+
+  
+
+  loadDiabtesTestData() {
+    this.httpClient.post("http://127.0.0.1:5000/getDiabetesTestData",
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }).subscribe(((response) => {
+        var response = response;
+        setTimeout(() => { this.afterloadDiabtesTestData(response); }, 500);
+      }));
+  }
+
+  afterloadDiabtesTestData(response: any) {
+
+
+    var persons: any = []
+    for (var i = 0; i < 30; i++) {
+      var p: User = new User();
+      p.name = "Person " + (i + 1) + " - " + this.diabetesClass[Number(response[i]["CLASS"])];
+      p.id = i;
+      p.age = response[i]["AGE"];
+      p.familyhistory = response[i]["FIELD_31"];
+      p.smoking = response[i]["FIELD_33"];
+      p.drinking = response[i]["FIELD_38"];
+      p.physicalactivity = response[i]["FIELD_40"];
+      p.creatinine = response[i]["L100500"];
+      p.uricacid = response[i]["L100700"];
+      p.FPG = response[i]["L100800"];
+      p.serumGOT = response[i]["L101200"];
+      p.serumGPT = response[i]["L101300"];
+      p.alkphosphatse = response[i]["L101600"];
+      p.gammagtp = response[i]["L101700"];
+      p.triglycerides = response[i]["L103000"];
+      p.HDLcholesterol = response[i]["L103100"];
+      p.cardiacriskfactor = response[i]["L103300"];
+      p.hbalc = response[i]["L104600"];
+      p.BUNCREAratio = response[i]["L107400"];
+      p.WBC = response[i]["L190000"];
+      p.RBC = response[i]["L190300"];
+      p.hemoglobin = response[i]["L190400"];
+      p.height = response[i]["S000100"];
+      p.bmi = response[i]["S000300"];
+      p.SBP = response[i]["S000501"];
+      p.DBP = response[i]["S000502"];
+      p.sex = response[i]["SEX"];
+      persons[i] = p;
+    }
+
+    this.diabetesTestUserData = persons;
+    
+    this.user = this.diabetesTestUserData[0];
+
+
+  
+    this.formatuserData();
+    this.loadData();
+    this.loadHistogramData();
+
+
+
+
+  }
+
+  newUserSelected() {
+
+    this.user = this.diabetesTestUserData[this.selectedPerson]; 
+
+    this.formatuserData();
+    this.loadData();
+    this.loadHistogramData();
+
+  }
+
 
 }
