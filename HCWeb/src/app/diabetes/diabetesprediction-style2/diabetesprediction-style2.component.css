@@ -1,3 +1,7 @@
+.mat-form-field-flex {
+    background-color: white !important;
+}
+
 .mycontainer>div>span {
     width: 50px;
 }
@@ -46,8 +50,5 @@ tr>th {
     text-align: center;
 }
 
-.featureNormalRangeLable {
-    font-size: 11px;
-    color: gray;
-    font-style: italic;
-}
+
+/* .mat-form-field-appearance-fill .mat-form-field-flex { */

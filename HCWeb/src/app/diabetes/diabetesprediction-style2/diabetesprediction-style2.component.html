@@ -71,7 +71,7 @@
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.gammagtp"> </td>
                         <td>
-                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.gammagtp" style="width: 90%;"></mat-slider>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="300" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.gammagtp" style="width: 90%;"></mat-slider>
                             {{nextyearadjustedvalue.gammagtp}}
                         </td>
                     </tr>

@@ -139,3 +139,9 @@ mat-radio-button {
 .tabContentContainer {
     margin: 10px;
 }
+
+.featureNormalRangeLable {
+    font-size: 11px;
+    color: gray;
+    font-style: italic;
+}
