@@ -2,9 +2,9 @@
 
     <div class="col-lg-12 col-sm-12 pull-right">
         <mat-form-field appearance="fill">
-            <mat-label> </mat-label>
+            <!-- <mat-label>Select Person</mat-label> -->
             <mat-select (selectionChange)="newUserSelected()" [(value)]="selectedPerson">
-                <mat-option></mat-option>
+                <!-- <mat-option></mat-option> -->
                 <mat-option [value]="option.id" *ngFor="let option of diabetesTestUserData">{{ option.name }}</mat-option>
             </mat-select>
         </mat-form-field>
