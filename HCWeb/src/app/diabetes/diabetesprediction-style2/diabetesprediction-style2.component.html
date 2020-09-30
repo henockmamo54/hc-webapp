@@ -45,55 +45,62 @@
                     </tr>
 
                     <tr>
-                        <td class="fname">FBG: </td>
+                        <td class="fname">FBG: <br>
+                            <span class="featureNormalRangeLable">100 - 125 mg/dl</span>
+                        </td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.FPG"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.FPG"> </td>
                         <td class="fslider">
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.FPG" style="width: 90%;">
                             </mat-slider>
+                            {{nextyearadjustedvalue.FPG}}
                         </td>
                     </tr>
                     <tr>
-                        <td class="fname">HbA1c: </td>
+                        <td class="fname">HbA1c: <br><span class="featureNormalRangeLable">5.7 - 6.4</span></td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.hbalc"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.hbalc"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="20" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.hbalc" style="width: 90%;">
-                            </mat-slider>
+                            </mat-slider> {{nextyearadjustedvalue.hbalc}}
                         </td>
 
                     </tr>
                     <tr>
-                        <td class="fname">gamma GTP: </td>
+                        <td class="fname">gamma GTP: <br><span class="featureNormalRangeLable">9 - 48 U/L</span></td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.gammagtp"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.gammagtp" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.gammagtp}}
                         </td>
                     </tr>
                     <tr>
-                        <td class="fname">BMI: </td>
+                        <td class="fname">BMI: <br><span class="featureNormalRangeLable">18.5 – 24.9</span></td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.bmi"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.bmi"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="50" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.bmi" style="width: 90%;">
                             </mat-slider>
+                            {{nextyearadjustedvalue.bmi}}
                         </td>
                     </tr>
                     <tr>
-                        <td class="fname">Triglycerides: </td>
+                        <td class="fname">Triglycerides: <br><span class="featureNormalRangeLable"> < 150 (mg/dL)</span></td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.triglycerides"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.triglycerides"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="300" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.triglycerides" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.triglycerides}}
                         </td>
                     </tr>
                     <tr>
-                        <td class="fname">Uric acid: </td>
+                        <td class="fname">Uric acid: <br><span class="featureNormalRangeLable"> 1.5 - 6.0 (mg/dL)</span></td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.uricacid"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.uricacid"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.uricacid" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.uricacid}}
                         </td>
                     </tr>
                     <tr>
@@ -103,6 +110,7 @@
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.age" style="width: 90%;">
                             </mat-slider>
+                            {{nextyearadjustedvalue.age}}
                         </td>
                     </tr>
                     <tr>
@@ -113,6 +121,7 @@
                         </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="7" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.physicalactivity" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.physicalactivity}}
                         </td>
 
                     </tr>
@@ -122,6 +131,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.drinking"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="8" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.drinking" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.drinking}}
                         </td>
 
                     </tr>
@@ -131,6 +141,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.smoking"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="6" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.smoking" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.smoking}}
                         </td>
 
 

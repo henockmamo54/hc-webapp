@@ -45,3 +45,9 @@ mat-radio-button {
 tr>th {
     text-align: center;
 }
+
+.featureNormalRangeLable {
+    font-size: 11px;
+    color: gray;
+    font-style: italic;
+}
