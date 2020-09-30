@@ -13,6 +13,11 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
   isloading: boolean;
   userFormatedValue: any;
 
+
+  testUserData: any;
+  selectedPerson: any = 0;
+
+
   status = "Normal"
   public canvasWidth = 300;
   public needleValue = 45
@@ -31,9 +36,7 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
 
 
   constructor(public httpClient: HttpClient) {
-
-    this.formatuserData();
-    this.loadHyperlipedemiaPrediction();
+    this.loadTestData();
   }
 
   ngOnInit(): void {
@@ -63,7 +66,7 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
 
   }
 
-  classValueLable = [ "Negative","Positive"];
+  classValueLable = ["Negative", "Positive"];
   afterDataReceived(response: Object) {
     this.isloading = false;
     var classvalue = response["Class value"][0]["CLASS"];
@@ -96,6 +99,82 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
 
     return this.userFormatedValue;
   }
+
+
+
+  loadTestData() {
+    this.httpClient.post("http://127.0.0.1:5000/getHyperlipidemiaTestData",
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }).subscribe(((response) => {
+        var response = response;
+        setTimeout(() => { this.afterloadTestData(response); }, 500);
+      }));
+  }
+
+  afterloadTestData(response: any) {
+
+
+    var persons: any = []
+    for (var i = 0; i < 20; i++) {
+      var p: User = new User();
+      p.name = "Person " + (i + 1) + " - " + this.classValueLable[Number(response[i]["CLASS"])];
+      p.id = i;
+
+      p.age = response[i]["AGE"];
+      p.drinking = response[i]["FIELD_38"];
+      p.creatinine = response[i]["L100500"];
+      p.uricacid = response[i]["L100700"];
+      p.FPG = response[i]["L100800"];
+      p.serumGOT = response[i]["L101200"];
+      p.serumGPT = response[i]["L101300"];
+      p.gammagtp = response[i]["L101700"];
+      p.totalCholesterol = response[i]["L102900"];
+      p.triglycerides = response[i]["L103000"];
+      p.totalCholesterol = response[i]["L103100"];
+      p.cardiacriskfactor = response[i]["L103300"];
+      p.UIBC = response[i]["L104500"];
+      p.hbalc = response[i]["L104600"];
+      p.RBC = response[i]["L190300"];
+      p.hemoglobin = response[i]["L190400"];
+      p.hct = response[i]["L190500"];
+      p.MCHC = response[i]["L190800"];
+      p.height = response[i]["S000100"];
+      p.bmi = response[i]["S000300"];
+      p.SBP = response[i]["S000501"];
+      p.DBP = response[i]["S000502"];
+      p.sex = response[i]["SEX"];
+      persons[i] = p;
+
+    }
+
+    this.testUserData = persons;
+    console.log(persons, '//////////////***********////////////////////////', response[0].length, 54544, response[0])
+    this.user = this.testUserData[0];
+
+
+    this.formatuserData();
+    this.loadHyperlipedemiaPrediction();
+
+
+
+
+  }
+
+  newUserSelected() {
+
+    this.user = this.testUserData[this.selectedPerson];
+
+
+    this.formatuserData();
+    this.loadHyperlipedemiaPrediction();
+
+  }
+
+
+
 
 
 }
