@@ -309,9 +309,9 @@
 
     <div class="col-lg-6 col-sm-12">
         <div class="row">
-            <div class=" row col-lg-12 col-sm-12">
+            <div class=" row col-lg-12 col-sm-12" style="padding-right: 0;">
 
-                <div class=" col-lg-5 col-sm-12 ">
+                <div class=" col-lg-5 col-sm-12 " style="height: 45%; ">
                     <app-final-prediction-header-value class="card" [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value>
                     <div class="card">
                         <div class="row">
@@ -325,12 +325,12 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <h3 style="margin-top:10px; margin-bottom: 0;">Age: {{user.age}}</h3>
+                                            <h4 style="margin-top:10px; margin-bottom: 0;">Age: {{user.age}}</h4>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h3 style="margin-top:10px;margin-bottom: 0.2rem;">Sex: {{user.sex}}</h3>
+                                            <h4 style="margin-top:10px;margin-bottom: 0.2rem;">Sex: {{user.sex}}</h4>
                                         </td>
                                     </tr>
                                 </table>
@@ -341,7 +341,7 @@
                     </div>
                 </div>
 
-                <div class=" col-lg-7 col-sm-12 ">
+                <div class=" col-lg-7 col-sm-12 " style="padding-right: 0;height: 45%;">
                     <div class="card">
                         <div class="progressbarcontainer">
                             <mat-progress-bar *ngIf="isloading" mode="indeterminate"></mat-progress-bar>

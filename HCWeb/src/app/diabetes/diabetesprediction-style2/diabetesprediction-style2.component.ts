@@ -130,12 +130,12 @@ export class DiabetespredictionStyle2Component implements OnInit {
 
     this.isNextYearPredictedValueloading = false;
 
-    this.nextyearuservalue.FPG = response["Next Year Value"][0]["L100800"].toFixed(2);
-    this.nextyearuservalue.hbalc = response["Next Year Value"][0]["L104600"].toFixed(2);
-    this.nextyearuservalue.gammagtp = response["Next Year Value"][0]["L101700"].toFixed(2);
-    this.nextyearuservalue.bmi = response["Next Year Value"][0]["S000300"].toFixed(2);
-    this.nextyearuservalue.triglycerides = response["Next Year Value"][0]["L103000"].toFixed(2);
-    this.nextyearuservalue.uricacid = response["Next Year Value"][0]["L100700"].toFixed(2);
+    this.nextyearuservalue.FPG = response["Next Year Value"][0]["L100800"].toFixed(1);
+    this.nextyearuservalue.hbalc = response["Next Year Value"][0]["L104600"].toFixed(1);
+    this.nextyearuservalue.gammagtp = response["Next Year Value"][0]["L101700"].toFixed(1);
+    this.nextyearuservalue.bmi = response["Next Year Value"][0]["S000300"].toFixed(1);
+    this.nextyearuservalue.triglycerides = response["Next Year Value"][0]["L103000"].toFixed(1);
+    this.nextyearuservalue.uricacid = response["Next Year Value"][0]["L100700"].toFixed(1);
     this.nextyearuservalue.age = response["Next Year Value"][0]["AGE"];
     this.nextyearuservalue.physicalactivity = this.user.physicalactivity;
     this.nextyearuservalue.sex = this.user.sex;
@@ -161,8 +161,8 @@ export class DiabetespredictionStyle2Component implements OnInit {
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
 
-    this.gaugeValue_nextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
-    this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
+    this.gaugeValue_nextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(1);
+    this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(1);
 
     this.nextyearadjustedvalue = cloneDeep(this.nextyearuservalue);
   }
@@ -195,7 +195,7 @@ export class DiabetespredictionStyle2Component implements OnInit {
     this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
-    this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
+    this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(1);
 
 
   }
