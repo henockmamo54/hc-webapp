@@ -25,6 +25,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
   isloading: boolean = false;
   statusvalue: any;
   statuspercetage: number;
+  piechartdata:any=[45,55];
 
   gaugeType = "full";
   gaugeAppendText = "%";
@@ -150,7 +151,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.classValueLable[classvalue];
     this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
-    // this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
+    this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"]];
 
 
     this.gaugeValue_nextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
@@ -185,7 +186,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.classValueLable[classvalue];
     this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
-    // this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
+    this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"]];
 
     this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
 

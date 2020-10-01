@@ -29,6 +29,7 @@ import { IschemiaPredictionComponent } from './Ischemia/ischemia-prediction/isch
 import { IschemiaPredictionType2Component } from './Ischemia/ischemia-prediction-type2/ischemia-prediction-type2.component';
 import { HyperlipidemiaPredictionType2Component } from './Hyperlipidemia/hyperlipidemia-prediction-type2/hyperlipidemia-prediction-type2.component';
 import {MatSelectModule} from '@angular/material/select';
+import { HyperlipidemiaStatusPiechartComponent } from './Hyperlipidemia/hyperlipidemia-status-piechart/hyperlipidemia-status-piechart.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {MatSelectModule} from '@angular/material/select';
     IschemiaPredictionType1Component,
     IschemiaPredictionComponent,
     IschemiaPredictionType2Component,
-    HyperlipidemiaPredictionType2Component 
+    HyperlipidemiaPredictionType2Component,
+    HyperlipidemiaStatusPiechartComponent 
   ],
   imports: [
     BrowserModule,
