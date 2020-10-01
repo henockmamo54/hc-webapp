@@ -1,18 +1,18 @@
 <div class="row tabContentContainer">
 
-    <div class="col-lg-12 col-sm-12 pull-right">
+    <!-- <div class="col-lg-12 col-sm-12 pull-right">
         <mat-form-field appearance="fill">
-            <!-- <mat-label> Select Person </mat-label> -->
+            <mat-label> Select Person </mat-label>
             <mat-select (selectionChange)="newUserSelected()" [(value)]="selectedPerson">
-                <!-- <mat-option></mat-option> -->
+                <mat-option></mat-option>
                 <mat-option [value]="option.id" *ngFor="let option of testUserData">{{ option.name }}</mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
+    </div> -->
 
 
 
-    <div class="col-lg-6 col-sm-12">
+    <div class="col-lg-7 col-sm-12">
         <div class="card">
 
             <div class="progressbarcontainer">
@@ -25,16 +25,25 @@
 
 
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2">
+                            <mat-form-field appearance="fill">
+                                <mat-label> Select Person </mat-label>
+                                <mat-select (selectionChange)="newUserSelected()" [(value)]="selectedPerson">
+                                    <mat-option></mat-option>
+                                    <mat-option [value]="option.id" *ngFor="let option of testUserData">{{ option.name }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                        </td>
+                        <!-- <td></td> -->
                         <td style="text-align: center;">
-                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_nextyear" [foregroundColor]=gauge_nextyearforegroundColor thick=10 size=100 [append]="gaugeAppendText"> </ngx-gauge>
+                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_nextyear" backgroundColor="#F5F5F5" [foregroundColor]=gauge_nextyearforegroundColor thick=10 size=100 [append]="gaugeAppendText"> </ngx-gauge>
                             <br> {{gaugeLabel_nextyear}}
 
                         </td>
 
                         <td style="text-align: center;">
-                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_adjustednextyear" [foregroundColor]=gauge_adjustednextyearforegroundColor thick=10 size=100 [append]="gaugeAppendText"> </ngx-gauge>
+                            <ngx-gauge [type]="gaugeType" [value]="gaugeValue_adjustednextyear" backgroundColor="#F5F5F5" [foregroundColor]=gauge_adjustednextyearforegroundColor thick=10 size=100 [append]="gaugeAppendText"> </ngx-gauge>
                             <br> {{gaugeLabel_adjustednextyear}}
                         </td>
                     </tr>
@@ -53,6 +62,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.cardiacriskfactor"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.cardiacriskfactor" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.cardiacriskfactor}}
                         </td>
                     </tr>
 
@@ -63,6 +73,7 @@
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.HDLcholesterol" style="width: 90%;">
                             </mat-slider>
+                            {{nextyearadjustedvalue.HDLcholesterol}}
                         </td>
                     </tr>
 
@@ -73,6 +84,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.gammagtp"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="100" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.gammagtp" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.gammagtp}}
                         </td>
                     </tr>
 
@@ -83,6 +95,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.serumGPT"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.serumGPT" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.serumGPT}}
                         </td>
                     </tr>
 
@@ -93,6 +106,7 @@
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="50" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.bmi" style="width: 90%;">
                             </mat-slider>
+                            {{nextyearadjustedvalue.bmi}}
                         </td>
                     </tr>
 
@@ -103,7 +117,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.age"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="110" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.age" style="width: 90%;">
-                            </mat-slider>
+                            </mat-slider> {{nextyearadjustedvalue.age}}
                         </td>
                     </tr>
 
@@ -115,6 +129,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.uricacid"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.uricacid" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.uricacid}}
                         </td>
                     </tr>
 
@@ -125,6 +140,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.hct"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.hct" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.hct}}
                         </td>
                     </tr>
 
@@ -134,7 +150,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.FPG"> </td>
                         <td class="fslider">
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="300" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.FPG" style="width: 90%;">
-                            </mat-slider>
+                            </mat-slider> {{nextyearadjustedvalue.FPG}}
                         </td>
                     </tr>
 
@@ -144,6 +160,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.RBC"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.RBC" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.RBC}}
                         </td>
                     </tr>
 
@@ -157,6 +174,7 @@
                         </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="7" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.physicalactivity" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.physicalactivity}}
                         </td>
 
                     </tr>
@@ -166,6 +184,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.drinking"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="8" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.drinking" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.drinking}}
                         </td>
 
                     </tr>
@@ -175,6 +194,7 @@
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.smoking"> </td>
                         <td>
                             <mat-slider (change)="onPredictedValueAdjusted()" min="0" max="6" step="1" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.smoking" style="width: 90%;"></mat-slider>
+                            {{nextyearadjustedvalue.smoking}}
                         </td>
 
 
@@ -302,45 +322,66 @@
     </div>
 
 
-    <div class="col-lg-6 col-sm-12">
-        <div class="row">
-            <div class=" row col-lg-12 col-sm-12">
+    <div class="col-lg-5 col-sm-12">
 
-                <div class=" col-lg-5 col-sm-12 ">
-                    <app-final-prediction-header-value class="card" [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="5rem" viewBox="0 0 24 24" width="5rem">
+        <div class="row">
+
+            <div class="  col-lg-12 col-sm-12 ">
+                <div class="row ">
+
+                    <div class=" col-lg-6 col-sm-12 card">
+                        <!-- <app-final-prediction-header-value style="height: 100px;" class=" " [(input_status)]="statusvalue" [(input_percentage)]="statuspercetage"></app-final-prediction-header-value> -->
+
+                        <div class="row verticalcenter">
+                            <div class="col-lg-5  col-sm-12" id="headerGaugeChartContainer" style="margin: auto;">
+                                <h1 style="margin: auto; text-align: center; font-weight: 500; color: #4c4b4b;">{{statuspercetage}}%</h1>
+                            </div>
+
+                            <div class="col-lg-7 col-sm-12" style="margin: auto; width: 50%; ">
+                                <h3 style="margin: 0;"> Status</h3>
+                                <hr style="margin-top: 0.4rem !important;font-weight: 700;margin-bottom: 0.4rem !important;margin-right: 0.2rem !important;">
+                                <h3 style="margin: 0;font-weight: 500; color: #4c4b4b;">{{statusvalue}}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-sm-12 " style="padding-right: 0;">
+                        <div class="card" style="height: 100px;">
+                            <div class="row verticalcenter">
+                                <div class="col-4 ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="5rem" viewBox="0 0 24 24" width="5rem">
                                 <path d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                             </svg>
-                            </div>
-                            <div class="col-8">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <h3 style="margin-top:10px; margin-bottom: 0;">Age: {{user.age}}</h3>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h3 style="margin-top:10px;margin-bottom: 0.2rem;">Sex: {{user.sex}}</h3>
-                                        </td>
-                                    </tr>
-                                </table>
+                                </div>
+                                <div class="col-8 ">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <h4 style="margin-top:10px; margin-bottom: 0;">Age: {{user.age}}</h4>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4 style="margin-top:10px;margin-bottom: 0.2rem;">Sex: <span *ngIf="user.sex == 0"> M </span>
+                                                    <span *ngIf="user.sex == 1"> F </span>
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
                             </div>
 
                         </div>
-
                     </div>
+
                 </div>
-
-
             </div>
 
 
         </div>
+
 
     </div>
 

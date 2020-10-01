@@ -9,7 +9,8 @@ import { cloneDeep } from "lodash";
   styleUrls: ['./hyperlipidemia-prediction-type2.component.css']
 })
 export class HyperlipidemiaPredictionType2Component implements OnInit {
-    user: User;
+  
+  user: User;
   thisyearuservalue: User;
   nextyearuservalue: User;
   nextyearadjustedvalue: User;
@@ -17,7 +18,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
   Class_colors = ["rgb(156,204,102)", "rgb(70,91,101)"];
 
   testUserData: any;
-  selectedPerson:any=0;
+  selectedPerson: any = 0;
 
 
   userFormatedValue: any;
@@ -48,7 +49,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
     this.thisyearuservalue = cloneDeep(this.user);
     this.nextyearuservalue = cloneDeep(this.user);
     this.nextyearadjustedvalue = cloneDeep(this.user);
-    
+
     this.loadTestData();
 
 
@@ -103,10 +104,6 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
 
   loadNextYearPredictedFeatureValues() {
 
-
-    console.log(this.userFormatedValue,"/*/*/*/*/*/*/*/*/*/*/*/*");
-
-
     this.isNextYearPredictedValueloading = true;
     this.httpClient.post("http://127.0.0.1:5000/predictHyperlipidemiaNextYearValue", this.userFormatedValue,
       {
@@ -152,7 +149,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
 
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.classValueLable[classvalue];
-    this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
+    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
     // this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
 
@@ -179,8 +176,6 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
 
   afterpredictClasValueForAdjustedNextyearValues(response: any) {
 
-    console.log("*************/////////*/*/*/*/*/*/*", this.userFormatedValue, response);
-
     this.isNextYearPredictedValueloading = false;
 
     var classvalue = response["Class value"][0]["CLASS"];
@@ -189,7 +184,7 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
 
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.classValueLable[classvalue];
-    this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
+    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
     // this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
     this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
@@ -206,7 +201,6 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
   }
 
   onPredictedValueAdjusted() {
-    console.log("on value adjusted", this.nextyearadjustedvalue);
 
     this.formatuserData(this.nextyearadjustedvalue);
     this.loadClasValueForAdjustedNextyearValues()
@@ -265,7 +259,6 @@ export class HyperlipidemiaPredictionType2Component implements OnInit {
     }
 
     this.testUserData = persons;
-    console.log(persons, '//////////////***********////////////////////////', response[0].length, 54544, response[0])
     this.user = this.testUserData[0];
 
 
