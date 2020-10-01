@@ -41,7 +41,7 @@ export class FinalPredictionHeaderValueComponent implements OnInit, AfterViewIni
   }
 
   ngOnInit(): void {
-    this.canvasWidth = document.getElementById('headerGaugeChartContainer').offsetWidth;
+    this.canvasWidth = 0.85*document.getElementById('headerGaugeChartContainer').offsetWidth;
 
   }
 
