@@ -8,15 +8,16 @@ import { Chart } from 'chart.js';
 })
 export class PredictionPieChartComponent implements OnInit, OnChanges, AfterViewInit {
 
-  @Input("data") piechartdata: any; 
+  @Input("data") piechartdata: any;
   @ViewChild('mycanvas') canvas: ElementRef;
   @Input("id") id: any;
   PieChart: any = [];
+  pichartLabels: any = ["Normal", "Prediabetes", "Diabetes"];
 
   constructor() {
   }
   ngAfterViewInit(): void {
-    
+
     this.InintPiechart();
   }
 
@@ -36,9 +37,9 @@ export class PredictionPieChartComponent implements OnInit, OnChanges, AfterView
   InintPiechart() {
 
     this.PieChart = new Chart(this.canvas.nativeElement.getContext('2d'), {
-      type: 'pie',
+      type: 'doughnut',
       data: {
-        labels: ["Normal", "Prediabetes", "Diabetes"],
+        labels: this.pichartLabels,
         datasets: [{
           label: '%',
           data: this.piechartdata,
@@ -48,9 +49,9 @@ export class PredictionPieChartComponent implements OnInit, OnChanges, AfterView
             '#465B65',
           ],
           borderColor: [
-            '#9CCC66',
-            '#27A69A',
-            '#465B65',
+            '#82ab54',
+            '#1d7d74',
+            '#314047',
           ],
           borderWidth: 1
         }]
@@ -66,8 +67,18 @@ export class PredictionPieChartComponent implements OnInit, OnChanges, AfterView
         },
         animation: {
           easing: "easeInOutExpo",
-          duration:1000
+          duration: 1000
+        },
+
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem, data) {
+              return data.labels[tooltipItem.index] + ": " +
+                (Number(data.datasets[0].data[tooltipItem.index]) * 100).toFixed(2) + "%";
+            }
+          }
         }
+
       }
     });
 
