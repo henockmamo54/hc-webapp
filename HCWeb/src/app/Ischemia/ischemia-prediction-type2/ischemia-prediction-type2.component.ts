@@ -14,7 +14,7 @@ export class IschemiaPredictionType2Component implements OnInit {
   thisyearuservalue: User;
   nextyearuservalue: User;
   nextyearadjustedvalue: User;
-  classValueLable = ["Negative", "Positive"];
+  classValueLable = ["Negative", "Positive"]; 
 
 
   public canvasWidth = 300;
@@ -163,7 +163,7 @@ export class IschemiaPredictionType2Component implements OnInit {
 
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.classValueLable[classvalue];
-    this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
+    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
 
 
     var percentageValue = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
@@ -191,15 +191,13 @@ export class IschemiaPredictionType2Component implements OnInit {
       }));
   }
 
-  afterpredictClasValueForAdjustedNextyearValues(response: any) {
-
-    console.log("/*/*/*/*/*/*/*/*/*/*/*//*/", response)
+  afterpredictClasValueForAdjustedNextyearValues(response: any) { 
 
     this.isNextYearPredictedValueloading = false;
 
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.classValueLable[classvalue];
-    this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
+    this.statuspercetage = Number((100*response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
     this.gaugeLabel_adjustednextyear = this.classValueLable[classvalue];
 
     var percentageValue = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
@@ -220,8 +218,7 @@ export class IschemiaPredictionType2Component implements OnInit {
 
   }
 
-  onPredictedValueAdjusted() {
-    console.log("on value adjusted");
+  onPredictedValueAdjusted() { 
 
     this.formatuserData(this.nextyearadjustedvalue);
     this.loadClasValueForAdjustedNextyearValues()
