@@ -12,6 +12,7 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
   user: User = new User();
   isloading: boolean;
   userFormatedValue: any;
+  piechartdata:any=[45,55]
 
 
   testUserData: any;
@@ -73,8 +74,9 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
     this.isloading = false;
     var classvalue = response["Class value"][0]["CLASS"];
     this.status = this.classValueLable[classvalue];
-    this.needleValue = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
-    this.centralLabel = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2) + "%";
+    this.needleValue = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(2));
+    this.centralLabel =  Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(2)) + "%";
+    this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"]];
 
   }
 
