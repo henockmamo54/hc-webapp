@@ -14,7 +14,7 @@ export class IschemiaPredictionType2Component implements OnInit {
   thisyearuservalue: User;
   nextyearuservalue: User;
   nextyearadjustedvalue: User;
-  classValueLable = ["Negative", "Positive"]; 
+  classValueLable = ["Negative", "Positive"];
 
 
   public canvasWidth = 300;
@@ -50,6 +50,8 @@ export class IschemiaPredictionType2Component implements OnInit {
 
   // chart data
   isNextYearPredictedValueloading: boolean;
+  testUserData: any;
+  selectedPerson: any = 0;
 
   constructor(public httpClient: HttpClient) {
 
@@ -60,9 +62,9 @@ export class IschemiaPredictionType2Component implements OnInit {
 
 
 
-    this.formatuserData(this.user);
-    // this.loadHistogramData();
-    this.loadNextYearPredictedFeatureValues();
+    this.loadTestData()
+    // this.formatuserData(this.user); 
+    // this.loadNextYearPredictedFeatureValues();
 
   }
 
@@ -191,13 +193,13 @@ export class IschemiaPredictionType2Component implements OnInit {
       }));
   }
 
-  afterpredictClasValueForAdjustedNextyearValues(response: any) { 
+  afterpredictClasValueForAdjustedNextyearValues(response: any) {
 
     this.isNextYearPredictedValueloading = false;
 
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.classValueLable[classvalue];
-    this.statuspercetage = Number((100*response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
+    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
     this.gaugeLabel_adjustednextyear = this.classValueLable[classvalue];
 
     var percentageValue = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(2);
@@ -218,21 +220,100 @@ export class IschemiaPredictionType2Component implements OnInit {
 
   }
 
-  onPredictedValueAdjusted() { 
+  onPredictedValueAdjusted() {
 
     this.formatuserData(this.nextyearadjustedvalue);
     this.loadClasValueForAdjustedNextyearValues()
 
   }
 
+  // load test data
 
 
-  findIndexOfBin(bins: any, value: any) {
-
-    for (let i = 0; i < bins.length; i++) {
-      if (value < bins[i]) { return i - 1; }
-    }
-    return bins.length - 1;
+  loadTestData() {
+    this.httpClient.post("http://127.0.0.1:5000/getIschemiaTestData",
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }).subscribe(((response) => {
+        var response = response;
+        setTimeout(() => { this.afterloadTestData(response); }, 500);
+      }));
   }
+
+  afterloadTestData(response: any) { 
+
+    var persons: any = []
+    for (var i = 0; i < 20; i++) {
+      var p: User = new User();
+      p.name = "Person " + (i + 1) + " - " + this.classValueLable[Number(response[i]["CLASS"])];
+      p.id = i;
+
+      p.gammagtp = response[i]["L101700"];
+      p.bmi = response[i]["S000300"];
+      p.uricacid = response[i]["L100700"];
+      p.cardiacriskfactor = response[i]["L103300"];
+      p.HDLcholesterol = response[i]["L103100"];
+      p.RBC = response[i]["L190300"];
+      p.triglycerides = response[i]["L103000"];
+      p.RBCDistributionWidth = response[i]["L190900"];
+      p.CEABowelDisease = response[i]["L504700"];
+      p.age = response[i]["AGE"]
+      p.sex = response[i]["SEX"];
+      p.smoking = response[i]["FIELD_33"];
+      p.drinking = response[i]["FIELD_38"];
+      p.diagnosedWithHighBloodPressure = response[i]["FIELD_15"];
+      p.bloodtype = response[i]["FIELD_4"];
+      p.creatinine = response[i]["L100500"];
+      p.albumin = response[i]["L100200"];
+      p.FPG = response[i]["L100800"];
+      p.serumGOT = response[i]["L101200"];
+      p.serumGPT = response[i]["L101300"];
+      p.alkphosphatse = response[i]["L101600"];
+      p.totalCholesterol = response[i]["L102900"];
+      p.LDLcholesterol = response[i]["L103200"];
+      p.iron = response[i]["L104300"];
+      p.TIBC = response[i]["L104400"];
+      p.UIBC = response[i]["L104500"];
+      p.WBC = response[i]["L190000"];
+      p.hemoglobin = response[i]["L190400"];
+      p.hct = response[i]["L190500"];
+      p.MCV = response[i]["L190600"];
+      p.MCH = response[i]["L190700"];
+      p.MCHC = response[i]["L190800"];
+      p.height = response[i]["S000100"];
+      p.SBP = response[i]["S000501"];
+      p.DBP = response[i]["S000502"];
+      persons[i] = p;
+
+    }
+
+    this.testUserData = persons;
+    this.user = this.testUserData[0];
+
+
+    this.formatuserData(this.user);  
+    this.loadNextYearPredictedFeatureValues();
+
+
+
+
+  }
+
+  newUserSelected() {
+
+    this.user = this.testUserData[this.selectedPerson];
+
+
+    this.formatuserData(this.user);
+
+    this.loadNextYearPredictedFeatureValues();
+
+  }
+
+
+
+
 
 }
