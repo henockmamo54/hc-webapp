@@ -37,10 +37,11 @@ mat-radio-button {
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
+    width: 9rem;
 }
 
 #sidebar-wrapper .list-group {
-    width: 10rem;
+    width: 9rem;
 }
 
 #page-content-wrapper {
