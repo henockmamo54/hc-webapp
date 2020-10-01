@@ -157,12 +157,12 @@ export class DiabetespredictionStyle2Component implements OnInit {
 
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.diabetesClass[classvalue];
-    this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
+    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
 
-    this.gaugeValue_nextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(1);
-    this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(1);
+    this.gaugeValue_nextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
+    this.gaugeValue_adjustednextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
 
     this.nextyearadjustedvalue = cloneDeep(this.nextyearuservalue);
   }
@@ -177,25 +177,23 @@ export class DiabetespredictionStyle2Component implements OnInit {
           'Content-Type': 'application/json',
         })
       }).subscribe(((response) => {
-        var response = response;
+        var response = response; 
         setTimeout(() => { this.afterpredictClasValueForAdjustedNextyearValues(response); }, 500);
       }));
   }
 
   afterpredictClasValueForAdjustedNextyearValues(response: any) {
-
     this.isNextYearPredictedValueloading = false;
 
     var classvalue = response["Class value"][0]["CLASS"];
     this.gaugeLabel_adjustednextyear = this.diabetesClass[classvalue];
     this.gauge_adjustednextyearforegroundColor = this.diabetesClass_colors[classvalue];
 
-    var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.diabetesClass[classvalue];
-    this.statuspercetage = response["Class probability"][0]["CLASS " + classvalue];
+    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
-    this.gaugeValue_adjustednextyear = 100 * response["Class probability"][0]["CLASS " + classvalue].toFixed(1);
+    this.gaugeValue_adjustednextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
 
 
   }
@@ -217,11 +215,13 @@ export class DiabetespredictionStyle2Component implements OnInit {
 
   }
 
-  onPredictedValueAdjusted() {
-    console.log("on value adjusted");
+  onPredictedValueAdjusted() { 
 
     this.formatuserData(this.nextyearadjustedvalue);
-    this.loadClasValueForAdjustedNextyearValues()
+    this.loadClasValueForAdjustedNextyearValues()    
+    this.loadHistogramData();
+
+    console.log("histogram data reloaded*******************")
 
   }
 
@@ -236,10 +236,10 @@ export class DiabetespredictionStyle2Component implements OnInit {
       this.hbalc_counts = response["hbalc_counts"];
       this.bmi_counts = response["bmi_counts"];
 
-      this.agebin_index = this.findIndexOfBin(response["age_bin_edges"], this.user.age);
-      this.fpgbin_index = this.findIndexOfBin(response["fpg_bin_edges"], this.user.FPG);
-      this.hba1cbin_index = this.findIndexOfBin(response["hbalc_bin_edges"], this.user.hbalc);
-      this.bmibin_index = this.findIndexOfBin(response["bmi_bin_edges"], this.user.bmi);
+      this.agebin_index = this.findIndexOfBin(response["age_bin_edges"], this.nextyearadjustedvalue.age);
+      this.fpgbin_index = this.findIndexOfBin(response["fpg_bin_edges"], this.nextyearadjustedvalue.FPG);
+      this.hba1cbin_index = this.findIndexOfBin(response["hbalc_bin_edges"], this.nextyearadjustedvalue.hbalc);
+      this.bmibin_index = this.findIndexOfBin(response["bmi_bin_edges"], this.nextyearadjustedvalue.bmi);
 
       this.formatBarChartLables(response["age_bin_edges"], response["fpg_bin_edges"], response["hbalc_bin_edges"], response["bmi_bin_edges"]);
     }));
@@ -275,7 +275,7 @@ export class DiabetespredictionStyle2Component implements OnInit {
   }
 
 
-
+  // load test data
   loadDiabtesTestData() {
     this.httpClient.post("http://127.0.0.1:5000/getDiabetesTestData",
       {
@@ -325,7 +325,6 @@ export class DiabetespredictionStyle2Component implements OnInit {
     }
 
     this.diabetesTestUserData = persons;
-    console.log(persons, '//////////////////////////////////////', response[0].length, 54544, response[0])
     this.user = this.diabetesTestUserData[0];
 
 
