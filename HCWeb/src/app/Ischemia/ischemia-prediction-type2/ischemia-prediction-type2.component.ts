@@ -229,7 +229,6 @@ export class IschemiaPredictionType2Component implements OnInit {
 
   // load test data
 
-
   loadTestData() {
     this.httpClient.post("http://127.0.0.1:5000/getIschemiaTestData",
       {
@@ -310,10 +309,6 @@ export class IschemiaPredictionType2Component implements OnInit {
 
     this.loadNextYearPredictedFeatureValues();
 
-  }
-
-
-
-
+  } 
 
 }
