@@ -44,13 +44,15 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
 
 
   onSelectionChange() {
-    this.formatuserData();
+    this.formatuserData(this.user);
     this.loadHyperlipedemiaPrediction();
   }
 
 
   loadHyperlipedemiaPrediction() {
 
+
+    console.log("userFormatedValueuserFormatedValue",this.userFormatedValue)
     this.isloading = true;
     this.httpClient.post("http://127.0.0.1:5000/predictNextYearHyperlipidemiaClass", this.userFormatedValue,
       {
@@ -76,24 +78,24 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
 
   }
 
-  formatuserData() {
+  formatuserData(userdata: User) {
 
     this.userFormatedValue = {
       "0": {
-        "L100800": this.user.FPG,
-        "L101700": this.user.gammagtp,
-        "L100700": this.user.uricacid,
-        "S000300": this.user.bmi,
-        "L190500": this.user.hct,
-        "L190300": this.user.RBC,
-        "L101300": this.user.serumGPT,
-        "L103300": this.user.cardiacriskfactor,
-        "L103100": this.user.HDLcholesterol,
-        "AGE": this.user.age,
-        "SEX": this.user.sex,
-        "FIELD_33": this.user.smoking,
-        "FIELD_38": this.user.drinking,
-        "FIELD_40": this.user.physicalactivity
+        "L100800": userdata.FPG,
+        "L101700": userdata.gammagtp,
+        "L100700": userdata.uricacid,
+        "S000300": userdata.bmi,
+        "L190500": userdata.hct,
+        "L190300": userdata.RBC,
+        "L101300": userdata.serumGPT,
+        "L103300": userdata.cardiacriskfactor,
+        "L103100": userdata.HDLcholesterol,
+        "AGE": userdata.age,
+        "SEX": userdata.sex,
+        "FIELD_33": userdata.smoking,
+        "FIELD_38": userdata.drinking,
+        "FIELD_40": userdata.physicalactivity
       }
     };
 
@@ -155,7 +157,7 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
     this.user = this.testUserData[0];
 
 
-    this.formatuserData();
+    this.formatuserData(this.user);
     this.loadHyperlipedemiaPrediction();
 
 
@@ -167,8 +169,10 @@ export class HyperlipidemiaPredictionType1Component implements OnInit {
 
     this.user = this.testUserData[this.selectedPerson];
 
+    console.log(this.selectedPerson)
 
-    this.formatuserData();
+
+    this.formatuserData(this.user);
     this.loadHyperlipedemiaPrediction();
 
   }
