@@ -167,7 +167,7 @@ export class DiabetespredictionStyle1Component implements OnInit {
     
     var classvalue=response["Class value"][0]["CLASS"];
     this.statusvalue=this.diabetesClass[classvalue];    
-    this.statuspercetage= response["Class probability"][0]["CLASS "+classvalue];
+    this.statuspercetage= Number((100*response["Class probability"][0]["CLASS "+classvalue]).toFixed(1));
 
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 

@@ -177,7 +177,7 @@ export class DiabetespredictionStyle2Component implements OnInit {
           'Content-Type': 'application/json',
         })
       }).subscribe(((response) => {
-        var response = response; 
+        var response = response;
         setTimeout(() => { this.afterpredictClasValueForAdjustedNextyearValues(response); }, 500);
       }));
   }
@@ -215,13 +215,11 @@ export class DiabetespredictionStyle2Component implements OnInit {
 
   }
 
-  onPredictedValueAdjusted() { 
+  onPredictedValueAdjusted() {
 
     this.formatuserData(this.nextyearadjustedvalue);
-    this.loadClasValueForAdjustedNextyearValues()    
+    this.loadClasValueForAdjustedNextyearValues()
     this.loadHistogramData();
-
-    console.log("histogram data reloaded*******************")
 
   }
 
