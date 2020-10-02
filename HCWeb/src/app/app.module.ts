@@ -30,7 +30,7 @@ import { IschemiaPredictionType2Component } from './Ischemia/ischemia-prediction
 import { HyperlipidemiaPredictionType2Component } from './Hyperlipidemia/hyperlipidemia-prediction-type2/hyperlipidemia-prediction-type2.component';
 import {MatSelectModule} from '@angular/material/select';
 import { HyperlipidemiaStatusPiechartComponent } from './Hyperlipidemia/hyperlipidemia-status-piechart/hyperlipidemia-status-piechart.component';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -64,7 +64,8 @@ import { HyperlipidemiaStatusPiechartComponent } from './Hyperlipidemia/hyperlip
     MatTabsModule,
     MatTableModule,
     NgxGaugeModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule
   ],
   providers: [ManageApiCallService, HttpClientModule],
   bootstrap: [AppComponent]
