@@ -150,11 +150,11 @@
 
 
                     <tr>
-                        <td class="fname">HCT: </td>
+                        <td class="fname" [matTooltipClass]="'my-tooltip'" matTooltip="Normal values &#13; Men: 38.3 - 48.6% &#13; Women: 35.5 - 44.9%" matTooltipPosition="right">HCT: </td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.hct"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.hct"> </td>
                         <td>
-                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="10" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.hct" style="width: 90%;"></mat-slider>
+                            <mat-slider (change)="onPredictedValueAdjusted()" min="1" max="100" step="0.5" thumbLabel={{1}} [(value)]="nextyearadjustedvalue.hct" style="width: 90%;"></mat-slider>
                             {{nextyearadjustedvalue.hct}}
                         </td>
                     </tr>
