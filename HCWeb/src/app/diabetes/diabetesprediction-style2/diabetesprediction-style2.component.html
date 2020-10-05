@@ -81,7 +81,12 @@
 
                     </tr>
                     <tr>
-                        <td class="fname">gamma GTP: <br><span class="featureNormalRangeLable">9 - 48 U/L</span></td>
+                        <td class="fname">gamma GTP: <br>
+
+                            <span mat-raised-button [matTooltipClass]="'my-tooltip'" matTooltip="The normal range is 9–48 units per liter (U/L). Normal values can vary due to age and sex." matTooltipPosition="right" class="featureNormalRangeLable">
+                                9 - 48 U/L
+                           </span>
+                        </td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.gammagtp"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.gammagtp"> </td>
                         <td>
@@ -90,7 +95,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="fname">BMI: <br><span class="featureNormalRangeLable">18.5 – 24.9</span></td>
+                        <td class="fname">BMI: <br>
+                            <span mat-raised-button [matTooltipClass]="'my-tooltip'" matTooltip="Underweight: < 18.5 &#13; Normal: 18.5 – 24.9 &#13; Overweight: 25.0 – 29.9 &#13; Obese: >29.9" matTooltipPosition="right" class="featureNormalRangeLable">
+                                18.5 – 24.9
+                           </span>
+                        </td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.bmi"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.bmi"> </td>
                         <td>
@@ -100,7 +109,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="fname">Triglycerides: <br><span class="featureNormalRangeLable"> < 150 (mg/dL)</span></td>
+                        <td class="fname">Triglycerides: <br>
+                            <span mat-raised-button [matTooltipClass]="'my-tooltip'" matTooltip="Normal : < 150 mg/dL  &#13; Borderline high : 150 - 199 mg/dL &#13; High : 200 - 499 mg/dL &#13; Very high : 500 mg/dL or above" matTooltipPosition="right" class="featureNormalRangeLable">
+                                < 150 mg/dL
+                           </span>
+                        </td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.triglycerides"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.triglycerides"> </td>
                         <td>
@@ -109,7 +122,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="fname">Uric acid: <br><span class="featureNormalRangeLable"> 1.5 - 6.0 (mg/dL)</span></td>
+                        <td class="fname">Uric acid: <br>
+                            <span mat-raised-button [matTooltipClass]="'my-tooltip'" matTooltip="Normal values for women: 1.5 - 6.0 mg/dL   &#13; Normal values for men: 2.5 - 7.0 mg/dL" matTooltipPosition="right" class="featureNormalRangeLable">
+                                1.5 - 6.0 mg/dL
+                           </span>
+                        </td>
                         <td class="fvalue"><input type="text" (change)="onThisYearValueChanged()" class="form-control" [(ngModel)]="user.uricacid"> </td>
                         <td class="fvalue"><input disabled type="text" class="form-control" [(ngModel)]="nextyearuservalue.uricacid"> </td>
                         <td>
