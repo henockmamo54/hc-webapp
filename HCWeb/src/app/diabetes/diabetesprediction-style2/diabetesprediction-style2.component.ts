@@ -127,15 +127,15 @@ export class DiabetespredictionStyle2Component implements OnInit {
   }
 
   afterNextYearValuePredictionDataReceived(response: any) {
-
+    
     this.isNextYearPredictedValueloading = false;
 
-    this.nextyearuservalue.FPG = response["Next Year Value"][0]["L100800"].toFixed(1);
-    this.nextyearuservalue.hbalc = response["Next Year Value"][0]["L104600"].toFixed(1);
-    this.nextyearuservalue.gammagtp = response["Next Year Value"][0]["L101700"].toFixed(1);
-    this.nextyearuservalue.bmi = response["Next Year Value"][0]["S000300"].toFixed(1);
-    this.nextyearuservalue.triglycerides = response["Next Year Value"][0]["L103000"].toFixed(1);
-    this.nextyearuservalue.uricacid = response["Next Year Value"][0]["L100700"].toFixed(1);
+    this.nextyearuservalue.FPG = response["Next Year Value"][0]["fasting glucose"].toFixed(1);
+    this.nextyearuservalue.hbalc = response["Next Year Value"][0]["HBA1C"].toFixed(1);
+    this.nextyearuservalue.gammagtp = response["Next Year Value"][0]["r-GTP gamma"].toFixed(1);
+    this.nextyearuservalue.bmi = response["Next Year Value"][0]["BMI"].toFixed(1);
+    this.nextyearuservalue.triglycerides = response["Next Year Value"][0]["Triglycerides"].toFixed(1);
+    this.nextyearuservalue.uricacid = response["Next Year Value"][0]["Uric Acid"].toFixed(1);
     this.nextyearuservalue.age = response["Next Year Value"][0]["AGE"];
     this.nextyearuservalue.physicalactivity = this.user.physicalactivity;
     this.nextyearuservalue.sex = this.user.sex;
