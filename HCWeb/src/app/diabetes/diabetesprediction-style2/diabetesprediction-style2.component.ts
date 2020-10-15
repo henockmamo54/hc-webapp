@@ -32,8 +32,8 @@ export class DiabetespredictionStyle2Component implements OnInit {
   gaugeValue_adjustednextyear = 28.3;
   gaugeLabel_nextyear = "Normal";
   gaugeLabel_adjustednextyear = "Normal";
-  gauge_nextyearforegroundColor = "rgba(0, 150, 136, 1)";
-  gauge_adjustednextyearforegroundColor = "rgba(0, 150, 136, 1)";
+  gauge_nextyearforegroundColor = "rgb(156,204,102)";
+  gauge_adjustednextyearforegroundColor = "rgb(156,204,102)";
 
   // chart data
   piechartdata: Array<number> = [25, 50, 25];
@@ -78,32 +78,32 @@ export class DiabetespredictionStyle2Component implements OnInit {
 
     this.userFormatedValue = {
       "0": {
-        "L100800": userdata.FPG,
-        "L104600": userdata.hbalc,
-        "L100700": userdata.uricacid,
-        "S000300": userdata.bmi,
-        "L103000": userdata.triglycerides,
-        "AGE": userdata.age,
-        "L101700": userdata.gammagtp,
-        "SEX": userdata.sex,
-        "FIELD_31": userdata.familyhistory,
-        "FIELD_33": userdata.smoking,
-        "FIELD_38": userdata.drinking,
-        "FIELD_40": userdata.physicalactivity,
-        "L100500": userdata.creatinine,
-        "L101200": userdata.serumGOT,
-        "L101300": userdata.serumGPT,
-        "L101600": userdata.alkphosphatse,
-        "L103100": userdata.HDLcholesterol,
-        "L103300": userdata.cardiacriskfactor,
-        "L107400": userdata.BUNCREAratio,
-        "L190000": userdata.WBC,
-        "L190300": userdata.RBC,
-        "L190400": userdata.hemoglobin,
-        "S000100": userdata.height,
-        "S000501": userdata.SBP,
-        "S000502": userdata.DBP,
-        "L190500": userdata.hct,
+        "L100800": Number(userdata.FPG),
+        "L104600": Number(userdata.hbalc),
+        "L100700": Number(userdata.uricacid),
+        "S000300": Number(userdata.bmi),
+        "L103000": Number(userdata.triglycerides),
+        "AGE": Number(userdata.age),
+        "L101700": Number(userdata.gammagtp),
+        "SEX": Number(userdata.sex),
+        "FIELD_31": Number(userdata.familyhistory),
+        "FIELD_33": Number(userdata.smoking),
+        "FIELD_38": Number(userdata.drinking),
+        "FIELD_40": Number(userdata.physicalactivity),
+        "L100500": Number(userdata.creatinine),
+        "L101200": Number(userdata.serumGOT),
+        "L101300": Number(userdata.serumGPT),
+        "L101600": Number(userdata.alkphosphatse),
+        "L103100": Number(userdata.HDLcholesterol),
+        "L103300": Number(userdata.cardiacriskfactor),
+        "L107400": Number(userdata.BUNCREAratio),
+        "L190000": Number(userdata.WBC),
+        "L190300": Number(userdata.RBC),
+        "L190400": Number(userdata.hemoglobin),
+        "S000100": Number(userdata.height),
+        "S000501": Number(userdata.SBP),
+        "S000502": Number(userdata.DBP),
+        "L190500": Number(userdata.hct),
 
       }
     };
@@ -127,7 +127,7 @@ export class DiabetespredictionStyle2Component implements OnInit {
   }
 
   afterNextYearValuePredictionDataReceived(response: any) {
-    
+
     this.isNextYearPredictedValueloading = false;
 
     this.nextyearuservalue.FPG = response["Next Year Value"][0]["fasting glucose"].toFixed(1);
@@ -153,16 +153,14 @@ export class DiabetespredictionStyle2Component implements OnInit {
     this.gauge_adjustednextyearforegroundColor = this.diabetesClass_colors[classvalue];
 
 
-
-
     var classvalue = response["Class value"][0]["CLASS"];
     this.statusvalue = this.diabetesClass[classvalue];
-    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
+    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(2));
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
 
-    this.gaugeValue_nextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
-    this.gaugeValue_adjustednextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
+    this.gaugeValue_nextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(2));
+    this.gaugeValue_adjustednextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(2));
 
     this.nextyearadjustedvalue = cloneDeep(this.nextyearuservalue);
   }
@@ -171,7 +169,7 @@ export class DiabetespredictionStyle2Component implements OnInit {
 
     this.isNextYearPredictedValueloading = true;
     //predictNextYearDiabeticClass
-    this.httpClient.post("http://127.0.0.1:5000/predictNextYearDiabeticClassDirect", this.userFormatedValue,
+    this.httpClient.post("http://127.0.0.1:5000/predictDiabetic", this.userFormatedValue,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -190,10 +188,10 @@ export class DiabetespredictionStyle2Component implements OnInit {
     this.gauge_adjustednextyearforegroundColor = this.diabetesClass_colors[classvalue];
 
     this.statusvalue = this.diabetesClass[classvalue];
-    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
+    this.statuspercetage = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(2));
     this.piechartdata = [response["Class probability"][0]["CLASS 0"], response["Class probability"][0]["CLASS 1"], response["Class probability"][0]["CLASS 2"]];
 
-    this.gaugeValue_adjustednextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(1));
+    this.gaugeValue_adjustednextyear = Number((100 * response["Class probability"][0]["CLASS " + classvalue]).toFixed(2));
 
 
   }
