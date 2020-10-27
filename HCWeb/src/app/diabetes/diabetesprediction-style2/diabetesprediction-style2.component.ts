@@ -168,8 +168,16 @@ export class DiabetespredictionStyle2Component implements OnInit {
   loadClasValueForAdjustedNextyearValues() {
 
     this.isNextYearPredictedValueloading = true;
+
+    var tempval = {
+      // "0": this.formatuserData(this.nextyearadjustedvalue),
+      "0": this.formatuserData(this.nextyearadjustedvalue),
+      "1": this.formatuserData(this.user)
+    } 
+
+
     //predictNextYearDiabeticClass
-    this.httpClient.post("http://127.0.0.1:5000/predictDiabetic", this.userFormatedValue,
+    this.httpClient.post("http://127.0.0.1:5000/predictDiabeticClassForAdustedValues", tempval,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
