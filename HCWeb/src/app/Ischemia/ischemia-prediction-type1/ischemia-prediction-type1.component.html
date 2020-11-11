@@ -161,24 +161,41 @@
 
     <div class="   col-lg-4 col-sm-12">
 
-        <div class="card">
+
+        <div class="col-lg-12 col-sm-12 card" style="padding: 0%;">
+            <div class="container ">
+                <div class="row " style="padding: 5%; padding-right:2%; padding-left: 2%; ">
+                    <div class="col ">
+                        Accuracy: 74%
+                    </div> |
+                    <div class="col ">
+                        Precision : 74%
+                    </div>|
+                    <div class="col ">
+                        Recall : 74%
+                    </div>|
+                    <div class="col ">
+                        F1-score: 74%
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card ">
 
 
 
             <div class="row ">
 
-                <div class="col-lg-6  col-sm-12" id="headerGaugeChartContainer">
-                    <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="needleValue" [centralLabel]="centralLabel" [options]="options" [name]="name" [bottomLabel]="bottomLabel"></rg-gauge-chart>
+                <div class="col-lg-6 col-sm-12 " id="headerGaugeChartContainer ">
+                    <rg-gauge-chart [canvasWidth]="canvasWidth " [needleValue]="needleValue " [centralLabel]="centralLabel " [options]="options " [name]="name " [bottomLabel]="bottomLabel "></rg-gauge-chart>
                 </div>
 
-                <div class="col-lg-4 col-sm-12" style="margin: auto;
-            width: 50%; 
-            font-weight: 700;">
-                    <h3 style="margin: 0;"> Status</h3>
-                    <hr style="margin-top: 0.4rem !important;
-                margin-bottom: 0.4rem !important;
-                margin-right: 0.2rem !important;">
-                    <h3 style="margin: 0;">{{status}}</h3>
+                <div class="col-lg-4 col-sm-12 " style="margin: auto; width: 50%; font-weight: 700; ">
+                    <h3 style="margin: 0; "> Status</h3>
+                    <hr style="margin-top: 0.4rem !important; margin-bottom: 0.4rem !important; margin-right: 0.2rem !important; ">
+                    <h3 style="margin: 0; ">{{status}}</h3>
                 </div>
             </div>
         </div>
