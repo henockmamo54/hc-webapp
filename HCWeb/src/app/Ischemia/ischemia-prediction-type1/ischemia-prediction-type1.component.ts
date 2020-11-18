@@ -52,7 +52,7 @@ export class IschemiaPredictionType1Component implements OnInit {
   loadHyperlipedemiaPrediction() {
 
     this.isloading = true;
-    this.httpClient.post("http://127.0.0.1:5000/predictIschemiaNextYearClass", this.userFormatedValue,
+    this.httpClient.post("http://127.0.0.1:5000/predictIschemiaNextYearClass_Direct", this.userFormatedValue,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
